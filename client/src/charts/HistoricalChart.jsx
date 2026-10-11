@@ -12,6 +12,7 @@ import {
 export default function HistoricalChart({
   data = [],
   pair = 'USD → INR',
+  quoteSymbol = '₹',
   timeframe = '30D',
   onTimeframeChange,
   isPositive = true
@@ -32,6 +33,13 @@ export default function HistoricalChart({
   const padding = (maxRate - minRate) * 0.12 || minRate * 0.01;
   const yDomain = [Math.max(0, minRate - padding), maxRate + padding];
 
+  const formatRateVal = (v) => {
+    if (v === null || v === undefined || isNaN(v)) return '--';
+    if (v >= 10) return v.toFixed(2);
+    if (v >= 0.1) return v.toFixed(4);
+    return v.toFixed(5);
+  };
+
   // Minimalist stroke & gradient
   const strokeColor = '#09090B';
   const gradientId = `chartGrad_${pair.replace(/[^a-zA-Z0-9]/g, '_')}`;
@@ -45,7 +53,7 @@ export default function HistoricalChart({
             {point.formattedDate || new Date(point.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </p>
           <p className="text-sm font-bold text-white tabular-nums">
-            ₹{Number(point.rate).toFixed(point.rate > 10 ? 2 : 4)}
+            {quoteSymbol}{formatRateVal(Number(point.rate))}
           </p>
         </div>
       );
@@ -111,8 +119,8 @@ export default function HistoricalChart({
               fontSize={11}
               tickLine={false}
               axisLine={{ stroke: '#E4E4E7' }}
-              tickFormatter={(v) => `₹${v > 10 ? v.toFixed(2) : v.toFixed(3)}`}
-              width={64}
+              tickFormatter={(v) => `${quoteSymbol}${formatRateVal(v)}`}
+              width={68}
             />
             <Tooltip content={<CustomTooltip />} />
             <Area

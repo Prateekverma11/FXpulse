@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import InrStatusCard from '../components/InrStatusCard';
+import CurrencyConverter from '../components/CurrencyConverter';
 import CurrencyDetailCard from '../components/CurrencyDetailCard';
 import QuickCurrencies from '../components/QuickCurrencies';
 import Footer from '../components/Footer';
@@ -11,7 +11,7 @@ import {
 } from '../services/api';
 
 export default function Dashboard({
-  selectedCurrency = 'USD',
+  selectedCurrency = 'AUD',
   onSelectCurrency,
   currencies = [],
   systemStats,
@@ -19,19 +19,66 @@ export default function Dashboard({
   onToggleBookmark,
   isBookmarked
 }) {
+  const [baseCurrency, setBaseCurrency] = useState(selectedCurrency || 'AUD');
+  const [quoteCurrency, setQuoteCurrency] = useState('INR');
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState('30D');
   const [analytics, setAnalytics] = useState(null);
   const [chartData, setChartData] = useState([]);
   const [ratesMap, setRatesMap] = useState({});
 
-  const activeCurrencyObj = currencies.find(c => c.code === selectedCurrency) || {
-    code: selectedCurrency,
-    name: selectedCurrency === 'USD' ? 'US Dollar' : selectedCurrency,
-    symbol: selectedCurrency === 'USD' ? '$' : selectedCurrency
+  // Sync when selectedCurrency prop changes from Header or Search
+  useEffect(() => {
+    if (selectedCurrency && selectedCurrency !== baseCurrency) {
+      if (selectedCurrency === quoteCurrency) {
+        setQuoteCurrency(baseCurrency);
+        setBaseCurrency(selectedCurrency);
+      } else {
+        setBaseCurrency(selectedCurrency);
+      }
+    }
+  }, [selectedCurrency]);
+
+  const activeBaseObj = currencies.find(c => c.code === baseCurrency) || {
+    code: baseCurrency,
+    name: baseCurrency === 'USD' ? 'US Dollar' : baseCurrency,
+    symbol: baseCurrency === 'USD' ? '$' : baseCurrency
   };
 
-  // 1. Fetch Selected Currency Analytics and Historical Chart Data
+  // Swap Base and Quote
+  const handleSwapPair = () => {
+    const nextBase = quoteCurrency;
+    const nextQuote = baseCurrency;
+    setBaseCurrency(nextBase);
+    setQuoteCurrency(nextQuote);
+    onSelectCurrency?.(nextBase);
+  };
+
+  // Set explicit pair (e.g. AUD -> INR or INR -> AUD)
+  const handleSetPair = (newBase, newQuote) => {
+    setBaseCurrency(newBase);
+    setQuoteCurrency(newQuote);
+    onSelectCurrency?.(newBase);
+  };
+
+  const handleChangeBase = (newBase) => {
+    if (newBase === quoteCurrency) {
+      handleSwapPair();
+    } else {
+      setBaseCurrency(newBase);
+      onSelectCurrency?.(newBase);
+    }
+  };
+
+  const handleChangeQuote = (newQuote) => {
+    if (newQuote === baseCurrency) {
+      handleSwapPair();
+    } else {
+      setQuoteCurrency(newQuote);
+    }
+  };
+
+  // 1. Fetch Selected Pair Analytics and Historical Chart Data
   useEffect(() => {
     let isMounted = true;
 
@@ -40,8 +87,8 @@ export default function Dashboard({
         setLoading(true);
 
         const [analyticsRes, historyRes] = await Promise.all([
-          fetchPairAnalytics(selectedCurrency, 'INR').catch(() => ({ data: null })),
-          fetchPairHistory(selectedCurrency, 'INR', timeframe).catch(() => ({ history: [] }))
+          fetchPairAnalytics(baseCurrency, quoteCurrency).catch(() => ({ data: null })),
+          fetchPairHistory(baseCurrency, quoteCurrency, timeframe).catch(() => ({ history: [] }))
         ]);
 
         if (isMounted) {
@@ -62,7 +109,7 @@ export default function Dashboard({
     return () => {
       isMounted = false;
     };
-  }, [selectedCurrency, timeframe]);
+  }, [baseCurrency, quoteCurrency, timeframe]);
 
   // 2. Fetch quick rates for top popular currencies vs INR
   useEffect(() => {
@@ -105,32 +152,46 @@ export default function Dashboard({
 
   return (
     <div className="space-y-8">
-      {/* 1. Indian Rupee Main Overview Status */}
-      <InrStatusCard
+      {/* 1. Horizontal Mid-Market Currency Converter */}
+      <CurrencyConverter
+        baseCurrency={baseCurrency}
+        quoteCurrency={quoteCurrency}
+        onSwapPair={handleSwapPair}
+        onChangeBase={handleChangeBase}
+        onChangeQuote={handleChangeQuote}
+        currencies={currencies}
         currentRate={currentRate}
         change24h={change24h}
-        referenceCurrency={selectedCurrency}
-        referenceSymbol={activeCurrencyObj.symbol}
         analytics={analytics}
       />
 
       {/* 2. Selected Currency Focus & Historical Graph with Bookmark Button */}
       <CurrencyDetailCard
-        currency={activeCurrencyObj}
+        baseCurrency={baseCurrency}
+        quoteCurrency={quoteCurrency}
+        currency={activeBaseObj}
+        currencies={currencies}
         analytics={analytics}
         chartData={chartData}
         timeframe={timeframe}
         onTimeframeChange={setTimeframe}
         loading={loading}
-        isBookmarked={isBookmarked ? isBookmarked(selectedCurrency) : bookmarks.includes(selectedCurrency)}
+        isBookmarked={isBookmarked ? isBookmarked(baseCurrency) : bookmarks.includes(baseCurrency)}
         onToggleBookmark={onToggleBookmark}
       />
 
       {/* 3. Quick Selector for Top Global Currencies */}
       <QuickCurrencies
         currencies={currencies}
-        selectedCurrency={selectedCurrency}
-        onSelectCurrency={onSelectCurrency}
+        selectedCurrency={baseCurrency}
+        onSelectCurrency={(code) => {
+          if (code === quoteCurrency) {
+            handleSwapPair();
+          } else {
+            setBaseCurrency(code);
+            onSelectCurrency?.(code);
+          }
+        }}
         ratesMap={ratesMap}
         bookmarks={bookmarks}
         onToggleBookmark={onToggleBookmark}
@@ -144,5 +205,3 @@ export default function Dashboard({
     </div>
   );
 }
-
-
