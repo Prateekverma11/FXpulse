@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bookmark, Activity, User, LogOut, LogIn } from 'lucide-react';
+import { Bookmark, Activity, User, LogOut, LogIn, Briefcase } from 'lucide-react';
 import CurrencySearchBar from './CurrencySearchBar';
 
 export default function Header({
@@ -14,13 +14,14 @@ export default function Header({
   onLogout,
   onOpenAuth,
   onOpenDashboard,
+  onOpenTravelWallet,
   currentView = 'dashboard'
 }) {
   return (
     <header className="bg-white/85 backdrop-blur-md border-b border-zinc-200/80 sticky top-0 z-30 transition-all">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Brand & Market Status */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           <div 
             onClick={onOpenDashboard}
             className="flex items-center gap-3 cursor-pointer select-none group"
@@ -43,6 +44,36 @@ export default function Header({
               </p>
             </div>
           </div>
+
+          {/* Navigation Mode Switcher: Markets vs Travel Wallet */}
+          {currentView !== 'auth' && (
+            <div className="flex items-center gap-1 bg-zinc-100 p-0.5 rounded-xl border border-zinc-200/80 ml-2">
+              <button
+                type="button"
+                onClick={onOpenDashboard}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  currentView === 'dashboard'
+                    ? 'bg-white text-zinc-950 shadow-xs'
+                    : 'text-zinc-500 hover:text-zinc-900'
+                }`}
+              >
+                <Activity className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Markets</span>
+              </button>
+              <button
+                type="button"
+                onClick={onOpenTravelWallet}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  currentView === 'wallet'
+                    ? 'bg-white text-zinc-950 shadow-xs'
+                    : 'text-zinc-500 hover:text-zinc-900'
+                }`}
+              >
+                <Briefcase className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Travel Wallet</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Search, Watchlist, and Auth Actions */}
