@@ -4,6 +4,7 @@ import Header from './components/Header';
 import NotificationToast from './components/NotificationToast';
 import BookmarksDrawer from './components/BookmarksDrawer';
 import Dashboard from './pages/Dashboard';
+import TravelWallet from './pages/TravelWallet';
 import WelcomeAuth from './pages/WelcomeAuth';
 import socketService from './services/socket';
 import { fetchSystemStatus, fetchCurrencies, fetchPairRate } from './services/api';
@@ -199,6 +200,7 @@ export default function App() {
           onLogout={handleLogout}
           onOpenAuth={() => setCurrentView('auth')}
           onOpenDashboard={() => setCurrentView('dashboard')}
+          onOpenTravelWallet={() => setCurrentView('wallet')}
           currentView={currentView}
         />
 
@@ -211,6 +213,8 @@ export default function App() {
               currencies={currencies}
               ratesMap={ratesMap}
             />
+          ) : currentView === 'wallet' ? (
+            <TravelWallet onOpenDashboard={() => setCurrentView('dashboard')} />
           ) : (
             <Routes>
               <Route
@@ -226,6 +230,10 @@ export default function App() {
                     isBookmarked={isBookmarked}
                   />
                 }
+              />
+              <Route
+                path="/wallet"
+                element={<TravelWallet onOpenDashboard={() => setCurrentView('dashboard')} />}
               />
               {/* Deep link routes */}
               <Route
