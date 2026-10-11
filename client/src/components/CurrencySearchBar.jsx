@@ -32,7 +32,7 @@ export default function CurrencySearchBar({
       c.code.toLowerCase().includes(q) ||
       c.name.toLowerCase().includes(q)
     );
-  }).filter(c => c.code !== 'INR'); // Exclude INR from foreign currency search
+  });
 
   useEffect(() => {
     setHighlightedIndex(0);
