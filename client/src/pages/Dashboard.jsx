@@ -114,7 +114,7 @@ export default function Dashboard({
   // 2. Fetch quick rates for top popular currencies vs INR
   useEffect(() => {
     let isMounted = true;
-    const popular = ['USD', 'EUR', 'GBP', 'JPY', 'AED', 'AUD', 'CAD', 'SGD', 'CHF'];
+    const popular = ['USD', 'EUR', 'GBP', 'JPY', 'AED', 'AUD', 'CAD', 'SGD', 'CHF', 'SAR', 'QAR', 'THB'];
 
     async function loadPopularRates() {
       try {

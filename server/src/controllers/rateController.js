@@ -25,7 +25,10 @@ export const getCurrencies = async (req, res) => {
         { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$' },
         { code: 'KRW', name: 'South Korean Won', symbol: '₩' },
         { code: 'BRL', name: 'Brazilian Real', symbol: 'R$' },
-        { code: 'ZAR', name: 'South African Rand', symbol: 'R' }
+        { code: 'ZAR', name: 'South African Rand', symbol: 'R' },
+        { code: 'SAR', name: 'Saudi Riyal', symbol: '﷼' },
+        { code: 'QAR', name: 'Qatari Riyal', symbol: 'QR' },
+        { code: 'THB', name: 'Thai Baht', symbol: '฿' }
       ];
       return res.json({ success: true, count: standard.length, data: standard });
     }
@@ -208,6 +211,7 @@ export const getPairHistory = async (req, res) => {
 
           records = quoteSeries.map(q => {
             const dayKey = q.timestamp.toISOString().split('T')[0];
+            const bRate = baseMap.get(dayKey) || baseSeries[baseSeries.length - 1]?.rate || 1;
             const rawRate = q.rate / bRate;
             const rate = bRate > 0 ? Number(rawRate.toFixed(rawRate < 0.05 ? 6 : 4)) : q.rate;
             return {
