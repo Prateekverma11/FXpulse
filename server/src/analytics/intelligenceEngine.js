@@ -68,6 +68,7 @@ export class IntelligenceEngine {
 
           records = quoteSeries.map(q => {
             const dayKey = q.timestamp.toISOString().split('T')[0];
+            const bRate = baseMap.get(dayKey) || baseSeries[baseSeries.length - 1]?.rate || 1;
             const rawRate = q.rate / bRate;
             const rate = bRate > 0 ? Number(rawRate.toFixed(rawRate < 0.05 ? 6 : 4)) : q.rate;
             return {

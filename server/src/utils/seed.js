@@ -17,7 +17,10 @@ const CURRENCIES = [
   { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$' },
   { code: 'KRW', name: 'South Korean Won', symbol: '₩' },
   { code: 'BRL', name: 'Brazilian Real', symbol: 'R$' },
-  { code: 'ZAR', name: 'South African Rand', symbol: 'R' }
+  { code: 'ZAR', name: 'South African Rand', symbol: 'R' },
+  { code: 'SAR', name: 'Saudi Riyal', symbol: '﷼' },
+  { code: 'QAR', name: 'Qatari Riyal', symbol: 'QR' },
+  { code: 'THB', name: 'Thai Baht', symbol: '฿' }
 ];
 
 async function main() {

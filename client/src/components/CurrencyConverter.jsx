@@ -31,7 +31,7 @@ export default function CurrencyConverter({
   analytics,
   className = ''
 }) {
-  const [amount, setAmount] = useState('1000');
+  const [amount, setAmount] = useState('1');
   const [convertedAmount, setConvertedAmount] = useState('');
   const [activeInput, setActiveInput] = useState('base'); // 'base' or 'quote'
   const [showTooltip, setShowTooltip] = useState(false);
@@ -246,7 +246,7 @@ export default function CurrencyConverter({
               inputMode="decimal"
               value={formatWithCommas(amount)}
               onChange={handleAmountChange}
-              placeholder="0"
+              placeholder="1"
               className="w-full pr-2 text-2xl sm:text-3xl font-bold text-zinc-950 bg-transparent border-none outline-none tabular-nums focus:ring-0 placeholder-zinc-300"
             />
 
@@ -258,7 +258,7 @@ export default function CurrencyConverter({
                   setDropdownOpen(dropdownOpen === 'base' ? null : 'base');
                   setSearchQuery('');
                 }}
-                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border-2 border-zinc-900 hover:bg-zinc-50 active:scale-98 transition-all shadow-xs cursor-pointer group"
+                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-zinc-300 hover:border-zinc-800 hover:bg-zinc-50 active:scale-98 transition-all shadow-xs cursor-pointer group"
               >
                 <span className="text-base sm:text-lg font-bold text-zinc-900 tracking-tight">
                   {baseCurrency}
