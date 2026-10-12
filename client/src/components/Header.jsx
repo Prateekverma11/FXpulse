@@ -44,36 +44,6 @@ export default function Header({
               </p>
             </div>
           </div>
-
-          {/* Navigation Mode Switcher: Markets vs Travel Wallet */}
-          {currentView !== 'auth' && (
-            <div className="flex items-center gap-1 bg-zinc-100 p-0.5 rounded-xl border border-zinc-200/80 ml-2">
-              <button
-                type="button"
-                onClick={onOpenDashboard}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  currentView === 'dashboard'
-                    ? 'bg-white text-zinc-950 shadow-xs'
-                    : 'text-zinc-500 hover:text-zinc-900'
-                }`}
-              >
-                <Activity className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Markets</span>
-              </button>
-              <button
-                type="button"
-                onClick={onOpenTravelWallet}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                  currentView === 'wallet'
-                    ? 'bg-white text-zinc-950 shadow-xs'
-                    : 'text-zinc-500 hover:text-zinc-900'
-                }`}
-              >
-                <Briefcase className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Travel Wallet</span>
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Search, Watchlist, and Auth Actions */}

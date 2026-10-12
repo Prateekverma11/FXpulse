@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, X, ArrowRight } from 'lucide-react';
+import { Plus, Trash2, X, ArrowRight, ArrowLeft, Briefcase, Activity } from 'lucide-react';
 import { fetchPairRate } from '../services/api';
 
 const DEFAULT_SECTIONS = [
@@ -40,7 +40,7 @@ const AVAILABLE_CURRENCIES = [
   { code: 'CHF', name: 'Swiss Franc', symbol: 'Fr' },
 ];
 
-export default function TravelWallet() {
+export default function TravelWallet({ onOpenDashboard }) {
   const [sections, setSections] = useState(() => {
     try {
       const saved = localStorage.getItem('fxpulse_minimal_wallet');
@@ -171,15 +171,50 @@ export default function TravelWallet() {
   return (
     <div className="max-w-2xl mx-auto space-y-8 pb-20">
       
+      {/* Navigation Mode Switcher: Markets vs Travel Wallet */}
+      {onOpenDashboard && (
+        <div className="flex justify-center pt-1">
+          <div className="inline-flex items-center gap-1 bg-zinc-100 p-0.5 rounded-xl border border-zinc-200/80 shadow-2xs">
+            <button
+              type="button"
+              onClick={onOpenDashboard}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-all cursor-pointer group"
+            >
+              <Activity className="w-3.5 h-3.5 text-zinc-600 group-hover:text-zinc-900" />
+              <span>Markets</span>
+            </button>
+            <button
+              type="button"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-zinc-950 shadow-xs cursor-default"
+            >
+              <Briefcase className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Travel Wallet</span>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Top Simple Header */}
       <div className="flex items-center justify-between border-b border-zinc-200 pb-4">
-        <div>
-          <h1 className="text-xl font-bold text-zinc-900 tracking-tight">
-            Travel Currency Wallet
-          </h1>
-          <p className="text-xs text-zinc-500 font-normal mt-0.5">
-            Add your foreign spending — automatically converts to Indian Rupee (₹)
-          </p>
+        <div className="flex items-center gap-3">
+          {onOpenDashboard && (
+            <button
+              type="button"
+              onClick={onOpenDashboard}
+              className="p-2 rounded-xl border border-zinc-200/80 hover:bg-zinc-100 text-zinc-600 hover:text-zinc-950 transition-colors cursor-pointer active:scale-95 shadow-2xs"
+              title="Back to Markets"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+          )}
+          <div>
+            <h1 className="text-xl font-bold text-zinc-900 tracking-tight">
+              Travel Currency Wallet
+            </h1>
+            <p className="text-xs text-zinc-500 font-normal mt-0.5">
+              Track and manage your travel expenses
+            </p>
+          </div>
         </div>
 
         <button

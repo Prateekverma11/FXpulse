@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { HelpCircle, ChevronDown, ArrowLeftRight, Check, Search, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react';
+import { HelpCircle, ChevronDown, ArrowLeftRight, Check, Search, ArrowUpRight, ArrowDownRight, Minus, Briefcase, Plane, ArrowRight } from 'lucide-react';
 
 const POPULAR_CURRENCIES = [
   { code: 'USD', name: 'US Dollar', symbol: '$' },
@@ -29,6 +29,7 @@ export default function CurrencyConverter({
   onChangeBase,
   onChangeQuote,
   analytics,
+  onOpenTravelWallet,
   className = ''
 }) {
   const [amount, setAmount] = useState('1');
@@ -318,6 +319,28 @@ export default function CurrencyConverter({
           </div>
         </div>
 
+      </div>
+
+      {/* Travel Expense Tracker Line */}
+      <div className="mt-5 sm:mt-6 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+        <div className="flex items-center gap-2.5 text-zinc-600">
+          <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 shrink-0">
+            <Plane className="w-3.5 h-3.5" />
+          </span>
+          <span className="font-medium text-zinc-700">
+            Want to travel? Track your expenses
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={onOpenTravelWallet}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 hover:bg-zinc-800 text-white shadow-xs hover:shadow transition-all cursor-pointer group active:scale-95 shrink-0"
+        >
+          <Briefcase className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition-transform" />
+          <span>Travel Wallet</span>
+          <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
+        </button>
       </div>
 
       {/* Currency Selector Dropdown / Search Modal (Clean, No Flags) */}

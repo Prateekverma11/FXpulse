@@ -228,6 +228,7 @@ export default function App() {
                     bookmarks={bookmarks}
                     onToggleBookmark={toggleBookmark}
                     isBookmarked={isBookmarked}
+                    onOpenTravelWallet={() => setCurrentView('wallet')}
                   />
                 }
               />
