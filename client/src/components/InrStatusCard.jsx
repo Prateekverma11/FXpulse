@@ -13,7 +13,9 @@ export default function InrStatusCard({
   change24h = 0,
   referenceCurrency,
   referenceSymbol,
-  analytics
+  analytics,
+  onOpenTravelWallet,
+  onOpenAI
 }) {
   const activeBase = (baseCurrency || referenceCurrency || 'AUD').toUpperCase();
   const activeQuote = (quoteCurrency || 'INR').toUpperCase();
@@ -60,6 +62,8 @@ export default function InrStatusCard({
       onChangeBase={handleChangeBase}
       onChangeQuote={handleChangeQuote}
       analytics={analytics}
+      onOpenTravelWallet={onOpenTravelWallet}
+      onOpenAI={onOpenAI}
     />
   );
 }

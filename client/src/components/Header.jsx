@@ -15,6 +15,7 @@ export default function Header({
   onOpenAuth,
   onOpenDashboard,
   onOpenTravelWallet,
+  onOpenAI,
   currentView = 'dashboard'
 }) {
   return (

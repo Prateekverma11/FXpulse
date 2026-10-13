@@ -1,4 +1,5 @@
 import IntelligenceEngine from '../analytics/intelligenceEngine.js';
+import CurrencyResearchAgent from '../services/currencyResearchAgent.js';
 import prisma from '../utils/prisma.js';
 
 export const getPairAnalytics = async (req, res) => {
@@ -113,3 +114,36 @@ export const comparePairs = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getCurrencyDiagnosis = async (req, res) => {
+  const base = (req.params.base || req.query.base || 'USD').toUpperCase();
+  const quote = (req.params.quote || req.query.quote || 'INR').toUpperCase();
+
+  try {
+    const research = await CurrencyResearchAgent.researchPair(base, quote);
+    res.json({
+      success: true,
+      data: research
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const handleAgentChat = async (req, res) => {
+  const message = req.body?.message || req.query?.message || 'Why is INR moving?';
+  const base = (req.body?.base || req.query?.base || 'USD').toUpperCase();
+  const quote = (req.body?.quote || req.query?.quote || 'INR').toUpperCase();
+
+  try {
+    const response = await CurrencyResearchAgent.answerQuery(message, base, quote);
+    res.json({
+      success: true,
+      data: response
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+

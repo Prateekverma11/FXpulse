@@ -46,6 +46,16 @@ export const fetchMarketIntelligence = async (base = 'USD') => {
   return res.data;
 };
 
+export const fetchCurrencyDiagnosis = async (base = 'USD', quote = 'INR') => {
+  const res = await api.get(`/intelligence/research/${base}/${quote}`);
+  return res.data;
+};
+
+export const sendAgentChat = async (message, base = 'USD', quote = 'INR') => {
+  const res = await api.post('/intelligence/chat', { message, base, quote });
+  return res.data;
+};
+
 export const fetchComparison = async (base = 'USD', quotes = 'INR,EUR,GBP,JPY', timeframe = '30D') => {
   const res = await api.get(`/compare?base=${base}&quotes=${quotes}&timeframe=${timeframe}`);
   return res.data;

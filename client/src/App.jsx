@@ -6,6 +6,8 @@ import BookmarksDrawer from './components/BookmarksDrawer';
 import Dashboard from './pages/Dashboard';
 import TravelWallet from './pages/TravelWallet';
 import WelcomeAuth from './pages/WelcomeAuth';
+import Intelligence from './pages/Intelligence';
+import AgenticAISection from './pages/AgenticAISection';
 import socketService from './services/socket';
 import { fetchSystemStatus, fetchCurrencies, fetchPairRate } from './services/api';
 import { useBookmarks } from './hooks/useBookmarks';
@@ -201,6 +203,7 @@ export default function App() {
           onOpenAuth={() => setCurrentView('auth')}
           onOpenDashboard={() => setCurrentView('dashboard')}
           onOpenTravelWallet={() => setCurrentView('wallet')}
+          onOpenAI={() => setCurrentView('ai')}
           currentView={currentView}
         />
 
@@ -214,7 +217,16 @@ export default function App() {
               ratesMap={ratesMap}
             />
           ) : currentView === 'wallet' ? (
-            <TravelWallet onOpenDashboard={() => setCurrentView('dashboard')} />
+            <TravelWallet 
+              onOpenDashboard={() => setCurrentView('dashboard')} 
+              onOpenAI={() => setCurrentView('ai')} 
+            />
+          ) : currentView === 'ai' ? (
+            <AgenticAISection
+              onOpenDashboard={() => setCurrentView('dashboard')}
+              onOpenTravelWallet={() => setCurrentView('wallet')}
+              selectedCurrency={selectedCurrency}
+            />
           ) : (
             <Routes>
               <Route
@@ -229,12 +241,32 @@ export default function App() {
                     onToggleBookmark={toggleBookmark}
                     isBookmarked={isBookmarked}
                     onOpenTravelWallet={() => setCurrentView('wallet')}
+                    onOpenAI={() => setCurrentView('ai')}
+                  />
+                }
+              />
+              <Route
+                path="/ai"
+                element={
+                  <AgenticAISection
+                    onOpenDashboard={() => setCurrentView('dashboard')}
+                    onOpenTravelWallet={() => setCurrentView('wallet')}
+                    selectedCurrency={selectedCurrency}
                   />
                 }
               />
               <Route
                 path="/wallet"
-                element={<TravelWallet onOpenDashboard={() => setCurrentView('dashboard')} />}
+                element={
+                  <TravelWallet 
+                    onOpenDashboard={() => setCurrentView('dashboard')} 
+                    onOpenAI={() => setCurrentView('ai')} 
+                  />
+                }
+              />
+              <Route
+                path="/intelligence"
+                element={<Intelligence baseCurrency={selectedCurrency} />}
               />
               {/* Deep link routes */}
               <Route

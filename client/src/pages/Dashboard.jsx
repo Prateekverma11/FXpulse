@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, Briefcase } from 'lucide-react';
 import CurrencyConverter from '../components/CurrencyConverter';
 import CurrencyDetailCard from '../components/CurrencyDetailCard';
 import QuickCurrencies from '../components/QuickCurrencies';
+import NavigationSwitcher from '../components/NavigationSwitcher';
 import Footer from '../components/Footer';
 import { 
   fetchCurrencies, 
@@ -19,7 +19,8 @@ export default function Dashboard({
   bookmarks = [],
   onToggleBookmark,
   isBookmarked,
-  onOpenTravelWallet
+  onOpenTravelWallet,
+  onOpenAI
 }) {
   const [baseCurrency, setBaseCurrency] = useState(selectedCurrency || 'AUD');
   const [quoteCurrency, setQuoteCurrency] = useState('INR');
@@ -154,28 +155,13 @@ export default function Dashboard({
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Navigation Mode Switcher: Markets vs Travel Wallet */}
-      {onOpenTravelWallet && (
-        <div className="flex justify-center -mb-2 sm:-mb-3">
-          <div className="inline-flex items-center gap-1 bg-zinc-100 p-0.5 rounded-xl border border-zinc-200/80 shadow-2xs">
-            <button
-              type="button"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-zinc-950 shadow-xs cursor-default"
-            >
-              <Activity className="w-3.5 h-3.5 text-zinc-900" />
-              <span>Markets</span>
-            </button>
-            <button
-              type="button"
-              onClick={onOpenTravelWallet}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-all cursor-pointer group"
-            >
-              <Briefcase className="w-3.5 h-3.5 text-indigo-600 group-hover:scale-105 transition-transform" />
-              <span>Travel Wallet</span>
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Navigation Mode Switcher: Markets vs Agentic AI vs Travel Wallet */}
+      <NavigationSwitcher
+        activeMode="markets"
+        onOpenDashboard={() => {}}
+        onOpenAI={onOpenAI}
+        onOpenTravelWallet={onOpenTravelWallet}
+      />
 
       {/* 1. Horizontal Mid-Market Currency Converter */}
       <CurrencyConverter
@@ -189,6 +175,7 @@ export default function Dashboard({
         change24h={change24h}
         analytics={analytics}
         onOpenTravelWallet={onOpenTravelWallet}
+        onOpenAI={onOpenAI}
       />
 
       {/* 2. Selected Currency Focus & Historical Graph with Bookmark Button */}
