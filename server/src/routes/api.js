@@ -9,7 +9,9 @@ import {
   getPairAnalytics,
   getTopMovers,
   getMarketIntelligence,
-  comparePairs
+  comparePairs,
+  getCurrencyDiagnosis,
+  handleAgentChat
 } from '../controllers/analyticsController.js';
 import {
   getAlerts,
@@ -40,6 +42,10 @@ router.get('/markets/volatility', async (req, res, next) => {
   return getTopMovers(req, res, next);
 });
 router.get('/intelligence', getMarketIntelligence);
+router.get('/intelligence/research', getCurrencyDiagnosis);
+router.get('/intelligence/research/:base/:quote', getCurrencyDiagnosis);
+router.post('/intelligence/chat', handleAgentChat);
+router.get('/intelligence/chat', handleAgentChat);
 router.get('/compare', comparePairs);
 
 // Alerts

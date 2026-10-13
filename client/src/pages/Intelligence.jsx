@@ -8,6 +8,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { fetchMarketIntelligence } from '../services/api';
+import AgenticResearchCard from '../components/AgenticResearchCard';
 
 export default function Intelligence({ baseCurrency = 'USD' }) {
   const [loading, setLoading] = useState(true);
@@ -35,12 +36,15 @@ export default function Intelligence({ baseCurrency = 'USD' }) {
       <div>
         <h2 className="text-lg font-medium text-white tracking-normal flex items-center gap-2">
           <BrainCircuit className="w-4 h-4 text-zinc-300" />
-          Market Intelligence &amp; Analytics
+          Market Intelligence &amp; Autonomous Research
         </h2>
         <p className="text-xs text-zinc-500 font-normal mt-0.5">
-          Calculated trend rankings, volatility metrics, and statistical anomaly detection.
+          Real-time agentic currency diagnostics, calculated trend rankings, and volatility signals.
         </p>
       </div>
+
+      {/* Autonomous Agentic Research Engine (Why is it Moving?) */}
+      <AgenticResearchCard initialBase={baseCurrency} initialQuote="INR" />
 
       {/* 1. Market Summary */}
       <section className="card-clean p-6 space-y-4">
