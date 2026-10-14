@@ -6,7 +6,6 @@ import BookmarksDrawer from './components/BookmarksDrawer';
 import Dashboard from './pages/Dashboard';
 import TravelWallet from './pages/TravelWallet';
 import WelcomeAuth from './pages/WelcomeAuth';
-import Intelligence from './pages/Intelligence';
 import AgenticAISection from './pages/AgenticAISection';
 import socketService from './services/socket';
 import { fetchSystemStatus, fetchCurrencies, fetchPairRate } from './services/api';
@@ -266,7 +265,7 @@ export default function App() {
               />
               <Route
                 path="/intelligence"
-                element={<Intelligence baseCurrency={selectedCurrency} />}
+                element={<Navigate to="/ai" replace />}
               />
               {/* Deep link routes */}
               <Route
