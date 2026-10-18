@@ -371,13 +371,114 @@ export class CurrencyResearchAgent {
   /**
    * Conversational Agent Interface:
    * Parses natural user questions and generates logical, ChatGPT-style structured explanations.
-   * Every reason is strictly focused and 1-2 lines, exactly as requested.
+   * Every reason is strictly focused and 1-2 lines.
+   * Only answers market-related queries — rejects random/off-topic questions.
    */
   static async answerQuery(userMessage, currentBase = 'USD', currentQuote = 'INR') {
     const rawQuery = (userMessage || '').trim();
     const text = rawQuery.toLowerCase();
     const now = new Date();
     const monthYear = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+    // ==========================================
+    // 0. CONVERSATIONAL & NON-MARKET QUERY GUARD
+    // ==========================================
+
+    const isHowAreYou = text.includes('how are you') || text.includes('how r u') || text.includes('how do you do');
+    const isGreeting = /^(hi|hello|hey|good morning|good evening|good afternoon|namaste|greetings)\b/i.test(text) || text === 'hi' || text === 'hello' || text === 'hey';
+    const isWhoAreYou = text.includes('who are you') || text.includes('what are you') || text.includes('what do you do') || text.includes('what can you do') || text.includes('help me');
+    const isThanks = text.includes('thank') || text.includes('thanks');
+
+    if (isHowAreYou) {
+      return {
+        query: userMessage,
+        isConversational: true,
+        topic: 'FXPulse Market Assistant',
+        leadSentence: 'I am doing well, thank you! I am the FXPulse Currency Intelligence Agent, continuously tracking real-time exchange rates, central bank decisions, and macroeconomic trends.',
+        inSimpleWords: 'I specialize strictly in currency and financial market intelligence. How can I assist your market analysis today?',
+        suggestedQueries: [
+          'Why is the US Dollar strengthening?',
+          'Why is Rupee (INR) falling today?',
+          'What is driving EUR/USD?',
+          'How does Crude Oil affect INR?'
+        ]
+      };
+    }
+
+    if (isGreeting) {
+      return {
+        query: userMessage,
+        isConversational: true,
+        topic: 'FXPulse Market Assistant',
+        leadSentence: 'Hello! I am your FXPulse Currency Intelligence Agent. I analyze live foreign exchange rates, crude oil benchmarks, and central bank monetary policies.',
+        inSimpleWords: 'How can I assist your market analysis today? You can ask me why any currency is moving, or explore exchange rate trends.',
+        suggestedQueries: [
+          'Why is the US Dollar strengthening?',
+          'Why is Rupee (INR) falling today?',
+          'What is driving EUR/USD?',
+          'How does Crude Oil affect INR?'
+        ]
+      };
+    }
+
+    if (isWhoAreYou) {
+      return {
+        query: userMessage,
+        isConversational: true,
+        topic: 'About FXPulse Agent',
+        leadSentence: 'I am the FXPulse Autonomous Currency Research Agent. Unlike generic chatbots, I correlate real-time forex rates, bond yields, oil prices, and verified news to explain why currencies move.',
+        inSimpleWords: 'I provide fact-backed, 1–2 line market attribution for exchange rate movements across all major currency pairs.',
+        suggestedQueries: [
+          'Why is the US Dollar strengthening?',
+          'Why is Rupee (INR) falling today?',
+          'What is driving EUR/USD?',
+          'How does Crude Oil affect INR?'
+        ]
+      };
+    }
+
+    if (isThanks) {
+      return {
+        query: userMessage,
+        isConversational: true,
+        topic: 'FXPulse Market Assistant',
+        leadSentence: 'You are very welcome! Let me know if you would like to analyze any other currencies or macroeconomic movements.',
+        inSimpleWords: 'Feel free to ask about USD, INR, EUR, JPY, GBP, or how commodities like crude oil impact global exchange rates.'
+      };
+    }
+
+    // Verify whether query has market / currency / economic relevance
+    const MARKET_KEYWORDS = [
+      'currency', 'currencies', 'fx', 'forex', 'rate', 'rates', 'exchange',
+      'usd', 'inr', 'eur', 'gbp', 'jpy', 'cad', 'aud', 'chf', 'cny', 'nzd',
+      'dollar', 'rupee', 'euro', 'yen', 'pound', 'sterling', 'dxy', 'greenback',
+      'oil', 'crude', 'brent', 'wti', 'commodity', 'gold',
+      'fed', 'rbi', 'ecb', 'boj', 'boe', 'central bank', 'powell', 'inflation', 'cpi', 'pce',
+      'yield', 'yields', 'treasury', 'bonds', 'interest', 'gdp', 'deficit', 'fii', 'fdi',
+      'strength', 'strong', 'weak', 'weakening', 'fall', 'falling', 'rise', 'rising',
+      'drop', 'gain', 'depreciation', 'appreciation', 'bearish', 'bullish', 'volatility',
+      'market', 'markets', 'economy', 'economic', 'trade', 'export', 'import', 'tariff',
+      'move', 'moves', 'moving', 'trend', 'forecast', 'analysis', 'analyze'
+    ];
+
+    const hasMarketRelevance = MARKET_KEYWORDS.some(kw => text.includes(kw));
+
+    if (!hasMarketRelevance) {
+      return {
+        query: userMessage,
+        isConversational: true,
+        isNonMarket: true,
+        topic: 'Market Scope Advisory',
+        leadSentence: 'I specialize exclusively in foreign exchange and financial market intelligence. I only analyze currency trends, exchange rates, central bank actions, and macroeconomic drivers.',
+        inSimpleWords: 'Please ask a currency or market-related question to see live fact-checked financial attribution.',
+        suggestedQueries: [
+          'Why is the US Dollar strengthening?',
+          'Why is Rupee (INR) falling today?',
+          'What is driving EUR/USD?',
+          'How does Crude Oil affect INR?'
+        ]
+      };
+    }
 
     let topic = 'Currency Intelligence';
     let baseCode = currentBase || 'USD';

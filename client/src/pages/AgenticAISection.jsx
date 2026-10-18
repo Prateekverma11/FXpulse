@@ -238,8 +238,53 @@ export default function AgenticAISection({
                   {/* Fact-Checked Research Result Card */}
                   {m.data && (
                     <div className="bg-zinc-50/80 border border-zinc-200/90 rounded-2xl p-5 space-y-4 text-zinc-800 shadow-2xs">
-                      {/* ChatGPT Style Response Layout */}
-                      {m.data.points && m.data.points.length > 0 ? (
+                      {/* Conversational & Non-Market Scope Handler */}
+                      {m.data.isConversational ? (
+                        <>
+                          <div className="flex items-center justify-between pb-3 border-b border-zinc-200/70">
+                            <div className="flex items-center gap-2">
+                              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                              <span className="font-bold text-zinc-950 text-xs tracking-tight">
+                                {m.data.topic || 'FXPulse Market Assistant'}
+                              </span>
+                            </div>
+                            <span className="text-[11px] text-zinc-500 font-medium">
+                              Forex &amp; Macro Intelligence Only
+                            </span>
+                          </div>
+
+                          <div className="text-[13px] text-zinc-900 font-medium leading-relaxed bg-white/80 p-3.5 rounded-xl border border-zinc-200/70 shadow-2xs">
+                            {m.data.leadSentence}
+                          </div>
+
+                          {m.data.inSimpleWords && (
+                            <p className="text-xs text-zinc-600 font-normal leading-relaxed">
+                              {m.data.inSimpleWords}
+                            </p>
+                          )}
+
+                          {m.data.suggestedQueries && m.data.suggestedQueries.length > 0 && (
+                            <div className="pt-2 border-t border-zinc-200/70 space-y-2">
+                              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider block">
+                                Recommended Market Analysis Prompts:
+                              </span>
+                              <div className="flex flex-wrap gap-1.5">
+                                {m.data.suggestedQueries.map((q) => (
+                                  <button
+                                    key={q}
+                                    type="button"
+                                    onClick={() => handleSend(q)}
+                                    className="text-xs px-3 py-1.5 rounded-xl bg-white hover:bg-zinc-100 text-zinc-700 hover:text-zinc-950 border border-zinc-200 flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer font-medium"
+                                  >
+                                    <span>{q}</span>
+                                    <ArrowRight className="w-3 h-3 text-zinc-400" />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      ) : m.data.points && m.data.points.length > 0 ? (
                         <>
                           {/* Header / Topic Bar */}
                           <div className="flex flex-wrap items-center justify-between pb-3 border-b border-zinc-200/70 gap-2">
