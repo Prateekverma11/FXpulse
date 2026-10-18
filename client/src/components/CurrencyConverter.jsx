@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { HelpCircle, ChevronDown, ArrowLeftRight, Check, Search, ArrowUpRight, ArrowDownRight, Minus, Briefcase, Plane, ArrowRight, Sparkles } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronRight, ArrowLeftRight, Check, Search, ArrowUpRight, ArrowDownRight, Minus, Briefcase, Plane, ArrowRight, Sparkles } from 'lucide-react';
 
 const POPULAR_CURRENCIES = [
   { code: 'USD', name: 'US Dollar', symbol: '$' },
@@ -322,51 +322,56 @@ export default function CurrencyConverter({
 
       </div>
 
-      {/* Travel Expense Tracker Line */}
-      <div className="mt-5 sm:mt-6 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
-        <div className="flex items-center gap-2.5 text-zinc-600">
-          <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 shrink-0">
-            <Plane className="w-3.5 h-3.5" />
-          </span>
-          <span className="font-medium text-zinc-700">
-            Want to travel? Track your expenses
-          </span>
-        </div>
+      {/* Dual Navigation Action Cards in White Color */}
+      <div className="mt-5 sm:mt-6 pt-5 border-t border-zinc-100 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        {/* Card 1: Planning a trip? / Travel Wallet */}
+        {onOpenTravelWallet && (
+          <button
+            type="button"
+            onClick={onOpenTravelWallet}
+            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white hover:bg-zinc-50/80 border border-zinc-200/90 hover:border-zinc-300 transition-all duration-200 cursor-pointer text-left group shadow-xs hover:shadow-sm"
+          >
+            <div className="flex items-center min-w-0 flex-1">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-50 border border-blue-100/80 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
+                <Plane className="w-5 h-5 text-blue-600" />
+              </div>
+              <div className="ml-3 sm:ml-3.5 min-w-0 flex-1">
+                <span className="text-sm font-semibold text-zinc-950 tracking-tight block group-hover:text-blue-950 transition-colors">
+                  Planning a trip?
+                </span>
+                <p className="text-xs text-zinc-500 font-normal truncate mt-0.5">
+                  Track your expenses with Travel Wallet.
+                </p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+          </button>
+        )}
 
-        <button
-          type="button"
-          onClick={onOpenTravelWallet}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 hover:bg-zinc-800 text-white shadow-xs hover:shadow transition-all cursor-pointer group active:scale-95 shrink-0"
-        >
-          <Briefcase className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition-transform" />
-          <span>Travel Wallet</span>
-          <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
-        </button>
-      </div>
-
-      {/* Agentic AI Intelligence Line */}
-      {onOpenAI && (
-        <div className="mt-3 pt-3 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
-          <div className="flex items-center gap-2.5 text-zinc-600">
-            <span className="flex items-center justify-center w-6 h-6 rounded-lg bg-amber-50 text-amber-600 shrink-0">
-              <Sparkles className="w-3.5 h-3.5" />
-            </span>
-            <span className="font-medium text-zinc-700">
-              Why is this currency moving? Research with AI
-            </span>
-          </div>
-
+        {/* Card 2: Why is this currency moving? / AI-powered insights */}
+        {onOpenAI && (
           <button
             type="button"
             onClick={onOpenAI}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 hover:bg-zinc-800 text-white shadow-xs hover:shadow transition-all cursor-pointer group active:scale-95 shrink-0"
+            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white hover:bg-zinc-50/80 border border-zinc-200/90 hover:border-zinc-300 transition-all duration-200 cursor-pointer text-left group shadow-xs hover:shadow-sm"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
-            <span>Agentic AI</span>
-            <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
+            <div className="flex items-center min-w-0 flex-1">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-amber-50 border border-amber-100/80 text-amber-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
+                <Sparkles className="w-5 h-5 text-amber-600" />
+              </div>
+              <div className="ml-3 sm:ml-3.5 min-w-0 flex-1">
+                <span className="text-sm font-semibold text-zinc-950 tracking-tight block group-hover:text-amber-950 transition-colors">
+                  Why is this currency moving?
+                </span>
+                <p className="text-xs text-zinc-500 font-normal truncate mt-0.5">
+                  Get AI-powered insights.
+                </p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Currency Selector Dropdown / Search Modal (Clean, No Flags) */}
       {dropdownOpen && (

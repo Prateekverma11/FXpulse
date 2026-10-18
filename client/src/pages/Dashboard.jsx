@@ -155,7 +155,7 @@ export default function Dashboard({
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Navigation Mode Switcher: Markets vs Agentic AI vs Travel Wallet */}
+      {/* Navigation Mode Switcher: Markets vs Travel Wallet vs Agentic AI */}
       <NavigationSwitcher
         activeMode="markets"
         onOpenDashboard={() => {}}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Sparkles, Briefcase } from 'lucide-react';
+import { Activity, Briefcase, Sparkles } from 'lucide-react';
 
 export default function NavigationSwitcher({
   activeMode = 'markets',
@@ -7,50 +7,70 @@ export default function NavigationSwitcher({
   onOpenAI,
   onOpenTravelWallet
 }) {
+  const handleMarketsClick = () => {
+    if (activeMode !== 'markets' && onOpenDashboard) {
+      onOpenDashboard();
+    }
+  };
+
+  const handleWalletClick = () => {
+    if (activeMode !== 'wallet' && onOpenTravelWallet) {
+      onOpenTravelWallet();
+    }
+  };
+
+  const handleAiClick = () => {
+    if (activeMode !== 'ai' && onOpenAI) {
+      onOpenAI();
+    }
+  };
+
   return (
-    <div className="flex justify-center -mb-2 sm:-mb-3">
-      <div className="inline-flex items-center gap-1 bg-zinc-100 p-0.5 rounded-xl border border-zinc-200/80 shadow-2xs">
+    <div className="flex justify-center -mb-1 sm:-mb-2">
+      <div className="inline-flex items-center gap-1 bg-zinc-100 p-1 rounded-full border border-zinc-200/90 shadow-2xs">
         {/* Markets Mode */}
         <button
           type="button"
-          onClick={onOpenDashboard}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+          onClick={handleMarketsClick}
+          className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
             activeMode === 'markets'
-              ? 'bg-white text-zinc-950 shadow-xs cursor-default'
-              : 'text-zinc-500 hover:text-zinc-900'
+              ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
+              : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
           }`}
         >
-          <Activity className="w-3.5 h-3.5 text-zinc-900" />
+          <Activity className="w-4 h-4 text-zinc-950 shrink-0" />
           <span>Markets</span>
-        </button>
-
-        {/* Agentic AI Mode */}
-        <button
-          type="button"
-          onClick={onOpenAI}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-            activeMode === 'ai'
-              ? 'bg-white text-zinc-950 shadow-xs cursor-default'
-              : 'text-zinc-500 hover:text-zinc-900'
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          <span>Agentic AI</span>
         </button>
 
         {/* Travel Wallet Mode */}
         {onOpenTravelWallet && (
           <button
             type="button"
-            onClick={onOpenTravelWallet}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+            onClick={handleWalletClick}
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
               activeMode === 'wallet'
-                ? 'bg-white text-zinc-950 shadow-xs cursor-default'
-                : 'text-zinc-500 hover:text-zinc-900'
+                ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
+                : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
             }`}
           >
-            <Briefcase className="w-3.5 h-3.5 text-indigo-600" />
+            <Briefcase className="w-4 h-4 text-indigo-600 shrink-0" />
             <span>Travel Wallet</span>
+          </button>
+        )}
+
+        {/* Agentic AI Mode */}
+        {onOpenAI && (
+          <button
+            type="button"
+            onClick={handleAiClick}
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
+              activeMode === 'ai'
+                ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
+                : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+            <span>Agentic AI</span>
           </button>
         )}
       </div>
