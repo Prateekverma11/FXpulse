@@ -32,10 +32,10 @@ export default function NavigationSwitcher({
         <button
           type="button"
           onClick={handleMarketsClick}
-          className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
+          className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-colors ${
             activeMode === 'markets'
               ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
-              : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
+              : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white font-medium cursor-pointer'
           }`}
         >
           <Activity className="w-4 h-4 text-zinc-950 dark:text-zinc-100 shrink-0" />
@@ -47,13 +47,13 @@ export default function NavigationSwitcher({
           <button
             type="button"
             onClick={handleWalletClick}
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-colors ${
               activeMode === 'wallet'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
-                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
+                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white font-medium cursor-pointer'
             }`}
           >
-            <Briefcase className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+            <Briefcase className="w-4 h-4 text-zinc-950 dark:text-zinc-100 shrink-0" />
             <span>Travel Wallet</span>
           </button>
         )}
@@ -63,13 +63,13 @@ export default function NavigationSwitcher({
           <button
             type="button"
             onClick={handleAiClick}
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-colors ${
               activeMode === 'ai'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
-                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
+                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white font-medium cursor-pointer'
             }`}
           >
-            <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" />
+            <Sparkles className="w-4 h-4 text-zinc-950 dark:text-zinc-100 shrink-0" />
             <span>Agentic AI</span>
           </button>
         )}

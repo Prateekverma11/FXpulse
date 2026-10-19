@@ -54,15 +54,15 @@ export default function ThemeToggle({
       <button
         type="button"
         onClick={toggleTheme}
-        className={`p-2 rounded-xl text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 border border-zinc-200/90 dark:border-zinc-700/80 transition-all duration-200 shadow-clean-xs active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 ${className}`}
+        className={`p-2 rounded-xl text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 border border-zinc-200/90 dark:border-zinc-700/80 transition-colors duration-200 shadow-clean-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 ${className}`}
         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
         title={isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
       >
         <span className="sr-only">{isDark ? 'Light mode' : 'Dark mode'}</span>
         {isDark ? (
-          <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
+          <Sun className="w-4 h-4 text-amber-400" />
         ) : (
-          <Moon className="w-4 h-4 text-zinc-700 transition-transform hover:-rotate-12" />
+          <Moon className="w-4 h-4 text-zinc-700" />
         )}
       </button>
     );
@@ -73,7 +73,7 @@ export default function ThemeToggle({
     <button
       type="button"
       onClick={toggleTheme}
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 select-none cursor-pointer border shadow-clean-xs active:scale-98 ${
+      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 select-none cursor-pointer border shadow-clean-xs ${
         isDark
           ? 'bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border-zinc-700/80 hover:border-zinc-600'
           : 'bg-white hover:bg-zinc-50 text-zinc-800 border-zinc-200/90 hover:border-zinc-300'
@@ -83,9 +83,9 @@ export default function ThemeToggle({
     >
       <div className="relative w-4 h-4 flex items-center justify-center">
         {isDark ? (
-          <Sun className="w-3.5 h-3.5 text-amber-400 transition-transform duration-300 rotate-0" />
+          <Sun className="w-3.5 h-3.5 text-amber-400" />
         ) : (
-          <Moon className="w-3.5 h-3.5 text-zinc-600 transition-transform duration-300 -rotate-12" />
+          <Moon className="w-3.5 h-3.5 text-zinc-600" />
         )}
       </div>
 

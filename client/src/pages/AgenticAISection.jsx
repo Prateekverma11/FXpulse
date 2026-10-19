@@ -177,7 +177,7 @@ export default function AgenticAISection({
         <div className="px-6 py-4.5 border-b border-zinc-200/70 dark:border-zinc-800 flex items-center justify-between bg-white dark:bg-[#121216]">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 flex items-center justify-center font-semibold shadow-2xs">
-              <Sparkles className="w-4 h-4 text-amber-500" />
+              <Sparkles className="w-4 h-4 text-zinc-900 dark:text-zinc-100" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -259,7 +259,7 @@ export default function AgenticAISection({
                         <>
                           <div className="flex items-center justify-between pb-3 border-b border-zinc-200/70">
                             <div className="flex items-center gap-2">
-                              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                              <Sparkles className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-100" />
                               <span className="font-bold text-zinc-950 text-xs tracking-tight">
                                 {m.data.topic || 'FXPulse Market Assistant'}
                               </span>

@@ -272,7 +272,7 @@ export default function BookmarksDrawer({
                     <div className="mt-2.5 pt-2 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs">
                       <span className="text-[11px] text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 font-normal flex items-center gap-1">
                         <span>Click to view chart</span>
-                        <ChevronRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                        <ChevronRight className="w-3 h-3 text-zinc-400 dark:text-zinc-500" />
                       </span>
 
                       <button
