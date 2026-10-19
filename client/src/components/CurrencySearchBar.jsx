@@ -86,7 +86,7 @@ export default function CurrencySearchBar({
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder="Search currency..."
-          className="w-full pl-9 pr-8 py-2 bg-white text-zinc-900 placeholder-zinc-400 text-sm rounded-lg border border-zinc-200 focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400 transition-all"
+          className="w-full pl-9 pr-8 py-2 bg-white dark:bg-zinc-800/90 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-500 focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-500 transition-all"
         />
         {query && (
           <button
@@ -94,7 +94,7 @@ export default function CurrencySearchBar({
               setQuery('');
               setIsOpen(false);
             }}
-            className="absolute right-2.5 text-zinc-400 hover:text-zinc-600 p-0.5"
+            className="absolute right-2.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 p-0.5"
             aria-label="Clear search"
           >
             <X className="w-3.5 h-3.5" />
@@ -103,7 +103,7 @@ export default function CurrencySearchBar({
       </div>
 
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1.5 bg-white border border-zinc-200 rounded-xl shadow-lg z-50 max-h-72 overflow-y-auto py-1">
+        <div className="absolute top-full left-0 right-0 mt-1.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg z-50 max-h-72 overflow-y-auto py-1">
           {filtered.length > 0 ? (
             filtered.map((curr, idx) => {
               const isSelected = curr.code === selectedCurrency;
@@ -119,24 +119,24 @@ export default function CurrencySearchBar({
                   }}
                   className={`w-full px-3.5 py-2.5 cursor-pointer flex items-center justify-between transition-colors ${
                     isHighlighted
-                      ? 'bg-zinc-100 text-zinc-900'
+                      ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100'
                       : isSelected
-                      ? 'bg-zinc-50 font-medium'
-                      : 'hover:bg-zinc-50'
+                      ? 'bg-zinc-50 dark:bg-zinc-800/60 font-medium text-zinc-900 dark:text-zinc-100'
+                      : 'hover:bg-zinc-50 dark:hover:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="w-7 h-7 rounded-md bg-zinc-100 border border-zinc-200/60 flex items-center justify-center text-xs font-semibold text-zinc-700">
+                    <span className="w-7 h-7 rounded-md bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/60 dark:border-zinc-700 flex items-center justify-center text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                       {curr.symbol || curr.code[0]}
                     </span>
                     <div>
-                      <span className="text-sm font-medium text-zinc-900">{curr.code}</span>
-                      <span className="text-xs text-zinc-500 ml-2 font-normal">{curr.name}</span>
+                      <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{curr.code}</span>
+                      <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-2 font-normal">{curr.name}</span>
                     </div>
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-zinc-400 font-normal">→ INR</span>
+                    <span className="text-xs text-zinc-400 dark:text-zinc-500 font-normal">→ INR</span>
                     {onToggleBookmark && (
                       <button
                         type="button"
@@ -145,8 +145,8 @@ export default function CurrencySearchBar({
                           e.stopPropagation();
                           onToggleBookmark(curr.code);
                         }}
-                        className={`p-1 rounded hover:bg-zinc-200/60 transition-colors ${
-                          isBookmarked ? 'text-amber-500' : 'text-zinc-300 hover:text-amber-500'
+                        className={`p-1 rounded hover:bg-zinc-200/60 dark:hover:bg-zinc-700/60 transition-colors ${
+                          isBookmarked ? 'text-amber-500' : 'text-zinc-300 dark:text-zinc-600 hover:text-amber-500'
                         }`}
                         title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
                       >
@@ -158,7 +158,7 @@ export default function CurrencySearchBar({
               );
             })
           ) : (
-            <div className="px-4 py-3 text-xs text-zinc-500 text-center font-normal">
+            <div className="px-4 py-3 text-xs text-zinc-500 dark:text-zinc-400 text-center font-normal">
               No currencies found matching &ldquo;{query}&rdquo;
             </div>
           )}

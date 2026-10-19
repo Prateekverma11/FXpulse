@@ -187,7 +187,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-[#FAFAFA] text-[#09090B] flex flex-col relative">
+      <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#09090B] dark:text-[#F4F4F5] flex flex-col relative transition-colors duration-200">
         {/* Header with Brand, Search, Watchlist and Auth status */}
         <Header
           currencies={currencies}

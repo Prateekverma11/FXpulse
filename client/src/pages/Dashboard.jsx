@@ -4,6 +4,7 @@ import CurrencyDetailCard from '../components/CurrencyDetailCard';
 import QuickCurrencies from '../components/QuickCurrencies';
 import NavigationSwitcher from '../components/NavigationSwitcher';
 import Footer from '../components/Footer';
+import ThemeToggle from '../components/ThemeToggle';
 import { 
   fetchCurrencies, 
   fetchPairAnalytics, 
@@ -155,13 +156,29 @@ export default function Dashboard({
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Navigation Mode Switcher: Markets vs Travel Wallet vs Agentic AI */}
-      <NavigationSwitcher
-        activeMode="markets"
-        onOpenDashboard={() => {}}
-        onOpenAI={onOpenAI}
-        onOpenTravelWallet={onOpenTravelWallet}
-      />
+      {/* Top Header / Navigation & Theme Controls in Right Corner */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 -mb-1 sm:-mb-2">
+        <div className="hidden sm:flex items-center gap-2 flex-1">
+          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 tracking-wide uppercase">
+            Live FX Markets
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+
+        <div className="flex-shrink-0">
+          <NavigationSwitcher
+            activeMode="markets"
+            onOpenDashboard={() => {}}
+            onOpenAI={onOpenAI}
+            onOpenTravelWallet={onOpenTravelWallet}
+          />
+        </div>
+
+        <div className="flex items-center justify-end flex-1 w-full sm:w-auto">
+          {/* Theme Option in Dashboard Right Corner */}
+          <ThemeToggle variant="segmented" showLabel={true} />
+        </div>
+      </div>
 
       {/* 1. Horizontal Mid-Market Currency Converter */}
       <CurrencyConverter

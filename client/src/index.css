@@ -10,6 +10,12 @@
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    background-color: #09090B;
+    color: #F4F4F5;
   }
 }
 
@@ -32,6 +38,14 @@
   background: #D4D4D8;
 }
 
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272A;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
 /* Clean minimal card system */
 .card-clean {
   background-color: #FFFFFF;
@@ -43,6 +57,16 @@
 
 .card-clean:hover {
   border-color: #D4D4D8;
+}
+
+html.dark .card-clean {
+  background-color: #121216;
+  border-color: #27272A;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+html.dark .card-clean:hover {
+  border-color: #3F3F46;
 }
 
 .card-clean-interactive {
@@ -59,6 +83,17 @@
   transform: translateY(-1px);
 }
 
+html.dark .card-clean-interactive {
+  background-color: #121216;
+  border-color: #27272A;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+html.dark .card-clean-interactive:hover {
+  border-color: #3F3F46;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.5);
+}
+
 /* Tabular figures for rates and financial numbers */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
@@ -67,5 +102,10 @@
 /* Subtle background mesh */
 .bg-grid-subtle {
   background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+html.dark .bg-grid-subtle {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
   background-size: 24px 24px;
 }
