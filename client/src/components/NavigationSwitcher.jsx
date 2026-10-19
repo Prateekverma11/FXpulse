@@ -26,19 +26,19 @@ export default function NavigationSwitcher({
   };
 
   return (
-    <div className="flex justify-center -mb-1 sm:-mb-2">
-      <div className="inline-flex items-center gap-1 bg-zinc-100 p-1 rounded-full border border-zinc-200/90 shadow-2xs">
+    <div className="flex justify-center">
+      <div className="inline-flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900/90 p-1 rounded-full border border-zinc-200/90 dark:border-zinc-800 shadow-2xs transition-colors">
         {/* Markets Mode */}
         <button
           type="button"
           onClick={handleMarketsClick}
           className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
             activeMode === 'markets'
-              ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
-              : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
+              ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
+              : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
           }`}
         >
-          <Activity className="w-4 h-4 text-zinc-950 shrink-0" />
+          <Activity className="w-4 h-4 text-zinc-950 dark:text-zinc-100 shrink-0" />
           <span>Markets</span>
         </button>
 
@@ -49,11 +49,11 @@ export default function NavigationSwitcher({
             onClick={handleWalletClick}
             className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
               activeMode === 'wallet'
-                ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
-                : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
+                ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
+                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
             }`}
           >
-            <Briefcase className="w-4 h-4 text-indigo-600 shrink-0" />
+            <Briefcase className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
             <span>Travel Wallet</span>
           </button>
         )}
@@ -65,11 +65,11 @@ export default function NavigationSwitcher({
             onClick={handleAiClick}
             className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all ${
               activeMode === 'ai'
-                ? 'bg-white text-zinc-950 font-semibold shadow-xs cursor-default'
-                : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/40 font-medium cursor-pointer'
+                ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white font-semibold shadow-xs cursor-default'
+                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-200/40 dark:hover:bg-zinc-800/60 font-medium cursor-pointer'
             }`}
           >
-            <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+            <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" />
             <span>Agentic AI</span>
           </button>
         )}

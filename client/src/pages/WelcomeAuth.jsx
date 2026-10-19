@@ -71,58 +71,58 @@ export default function WelcomeAuth({
           
           {/* Header & Value Proposition */}
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200/90 text-zinc-800 text-xs font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-700/60 text-zinc-800 dark:text-zinc-200 text-xs font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>Real-Time FX Intelligence</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight leading-[1.15]">
               Institutional-grade currency tracking and foreign exchange analytics.
             </h1>
 
-            <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed max-w-xl">
               FXPulse aggregates live reference rates from global central banks and market providers. Monitor Indian Rupee pairs, detect statistical volatility shifts, and track historical trends within a focused, high-precision environment.
             </p>
           </div>
 
           {/* Minimal Key Capabilities Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-            <div className="p-4 rounded-xl bg-white border border-zinc-200/80 shadow-clean-xs space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-800">
+            <div className="p-4 rounded-xl bg-white dark:bg-[#121216] border border-zinc-200/80 dark:border-zinc-800 shadow-clean-xs space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <Activity className="w-4 h-4" />
               </div>
-              <h3 className="text-xs font-semibold text-zinc-900 tracking-tight">Market Telemetry</h3>
-              <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+              <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">Market Telemetry</h3>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
                 Ingestion of live spot rates with clear distinction between provider and local timestamps.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-zinc-200/80 shadow-clean-xs space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-800">
+            <div className="p-4 rounded-xl bg-white dark:bg-[#121216] border border-zinc-200/80 dark:border-zinc-800 shadow-clean-xs space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <BarChart3 className="w-4 h-4" />
               </div>
-              <h3 className="text-xs font-semibold text-zinc-900 tracking-tight">Quantitative Analytics</h3>
-              <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+              <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">Quantitative Analytics</h3>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
                 Multi-horizon returns, standard deviation volatility, and statistical anomaly detection.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-zinc-200/80 shadow-clean-xs space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-800">
+            <div className="p-4 rounded-xl bg-white dark:bg-[#121216] border border-zinc-200/80 dark:border-zinc-800 shadow-clean-xs space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <Bookmark className="w-4 h-4" />
               </div>
-              <h3 className="text-xs font-semibold text-zinc-900 tracking-tight">Personalized Watchlists</h3>
-              <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+              <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">Personalized Watchlists</h3>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
                 Pin frequently referenced currency pairs into an accessible side panel.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-zinc-200/80 shadow-clean-xs space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-800">
+            <div className="p-4 rounded-xl bg-white dark:bg-[#121216] border border-zinc-200/80 dark:border-zinc-800 shadow-clean-xs space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200">
                 <Bell className="w-4 h-4" />
               </div>
-              <h3 className="text-xs font-semibold text-zinc-900 tracking-tight">WebSocket Alerts</h3>
-              <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+              <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">WebSocket Alerts</h3>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
                 Automated threshold monitoring and instant notifications for key currency movements.
               </p>
             </div>
@@ -136,13 +136,13 @@ export default function WelcomeAuth({
             
             {/* Form Header */}
             <div className="space-y-1 text-center">
-              <div className="w-9 h-9 rounded-lg bg-zinc-900 text-white font-bold text-sm flex items-center justify-center mx-auto mb-2.5">
+              <div className="w-9 h-9 rounded-lg bg-zinc-900 dark:bg-sky-500 text-white dark:text-zinc-950 font-bold text-sm flex items-center justify-center mx-auto mb-2.5 shadow-sm">
                 ₹
               </div>
-              <h2 className="text-lg font-bold text-zinc-900 tracking-tight">
+              <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
                 {authMode === 'login' ? 'Sign In to FXPulse' : 'Create an Account'}
               </h2>
-              <p className="text-xs text-zinc-500 font-normal">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal">
                 {authMode === 'login'
                   ? 'Access your custom watchlists and price alerts'
                   : 'Start tracking global currencies and trend analytics'}
@@ -150,7 +150,7 @@ export default function WelcomeAuth({
             </div>
 
             {/* Mode Switcher Tabs */}
-            <div className="grid grid-cols-2 p-1 bg-zinc-100 rounded-lg border border-zinc-200/70">
+            <div className="grid grid-cols-2 p-1 bg-zinc-100 dark:bg-zinc-800/70 rounded-lg border border-zinc-200/70 dark:border-zinc-700/60">
               <button
                 type="button"
                 onClick={() => {
@@ -159,8 +159,8 @@ export default function WelcomeAuth({
                 }}
                 className={`py-1.5 text-xs font-semibold rounded-md transition-all ${
                   authMode === 'login'
-                    ? 'bg-white text-zinc-900 shadow-clean-xs'
-                    : 'text-zinc-500 hover:text-zinc-900'
+                    ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-clean-xs'
+                    : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                 }`}
               >
                 Sign In
@@ -174,8 +174,8 @@ export default function WelcomeAuth({
                 }}
                 className={`py-1.5 text-xs font-semibold rounded-md transition-all ${
                   authMode === 'signup'
-                    ? 'bg-white text-zinc-900 shadow-clean-xs'
-                    : 'text-zinc-500 hover:text-zinc-900'
+                    ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-clean-xs'
+                    : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                 }`}
               >
                 Sign Up
@@ -184,7 +184,7 @@ export default function WelcomeAuth({
 
             {/* Error Message */}
             {error && (
-              <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium">
+              <div className="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 text-rose-700 dark:text-rose-400 text-xs font-medium">
                 {error}
               </div>
             )}
@@ -193,61 +193,61 @@ export default function WelcomeAuth({
             <form onSubmit={handleSubmit} className="space-y-3.5">
               {authMode === 'signup' && (
                 <div className="space-y-1">
-                  <label className="text-xs font-medium text-zinc-700 block">
+                  <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 block">
                     Full Name
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <User className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                     <input
                       type="text"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="e.g. Alex Morgan"
-                      className="w-full pl-9 pr-3 py-2 bg-white text-zinc-900 text-xs rounded-lg border border-zinc-200 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400"
+                      className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                     />
                   </div>
                 </div>
               )}
 
               <div className="space-y-1">
-                <label className="text-xs font-medium text-zinc-700 block">
+                <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 block">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Mail className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="user@fxpulse.com"
-                    className="w-full pl-9 pr-3 py-2 bg-white text-zinc-900 text-xs rounded-lg border border-zinc-200 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400"
+                    className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium text-zinc-700 block">
+                  <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 block">
                     Password
                   </label>
                   {authMode === 'login' && (
                     <button
                       type="button"
                       onClick={() => alert('Demo Mode: Enter any password or use Guest Access.')}
-                      className="text-[11px] text-zinc-400 hover:text-zinc-700 font-normal"
+                      className="text-[11px] text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 font-normal"
                     >
                       Forgot password?
                     </button>
                   )}
                 </div>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Lock className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••••••"
-                    className="w-full pl-9 pr-3 py-2 bg-white text-zinc-900 text-xs rounded-lg border border-zinc-200 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400"
+                    className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-zinc-500 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
                   />
                 </div>
               </div>
@@ -256,7 +256,7 @@ export default function WelcomeAuth({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 mt-1"
+                className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-zinc-950 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 mt-1 shadow-sm"
               >
                 {loading ? (
                   <span>Authenticating...</span>
@@ -271,8 +271,8 @@ export default function WelcomeAuth({
 
             {/* Divider */}
             <div className="relative flex items-center justify-center pt-1">
-              <div className="border-t border-zinc-200 w-full" />
-              <span className="bg-white px-3 text-[11px] text-zinc-400 font-normal absolute">
+              <div className="border-t border-zinc-200 dark:border-zinc-800 w-full" />
+              <span className="bg-white dark:bg-[#121216] px-3 text-[11px] text-zinc-400 dark:text-zinc-500 font-normal absolute">
                 or
               </span>
             </div>
@@ -281,15 +281,15 @@ export default function WelcomeAuth({
             <button
               type="button"
               onClick={handleGuestAccess}
-              className="w-full py-2.5 px-4 bg-zinc-50 hover:bg-zinc-100 text-zinc-800 border border-zinc-200 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+              className="w-full py-2.5 px-4 bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800/60 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
             >
-              <Activity className="w-3.5 h-3.5 text-zinc-600" />
+              <Activity className="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-400" />
               <span>Explore Dashboard as Guest</span>
             </button>
 
             {/* Security note */}
-            <div className="flex items-center justify-center gap-1.5 text-[11px] text-zinc-400 font-normal pt-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-zinc-500" />
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-zinc-400 dark:text-zinc-500 font-normal pt-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
               <span>Encrypted local session management</span>
             </div>
 

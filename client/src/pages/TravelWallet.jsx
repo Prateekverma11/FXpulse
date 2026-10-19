@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, X, ArrowLeft, ArrowRight, ArrowLeftRight, RefreshCw, Briefcase, ChevronDown } from 'lucide-react';
 import NavigationSwitcher from '../components/NavigationSwitcher';
+import ThemeToggle from '../components/ThemeToggle';
 import { fetchPairRate } from '../services/api';
 
 const AVAILABLE_CURRENCIES = [
@@ -297,37 +298,52 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
   return (
     <div className="max-w-2xl mx-auto space-y-8 pb-20">
       
-      {/* Navigation Mode Switcher: Markets vs Agentic AI vs Travel Wallet */}
-      {onOpenDashboard && (
-        <NavigationSwitcher
-          activeMode="wallet"
-          onOpenDashboard={onOpenDashboard}
-          onOpenAI={onOpenAI}
-          onOpenTravelWallet={() => {}}
-        />
-      )}
+      {/* Top Header / Navigation & Theme Controls */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 -mb-1 sm:-mb-2">
+        <div className="hidden sm:flex items-center gap-2 flex-1">
+          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 tracking-wide uppercase">
+            Travel Wallet
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+        </div>
+
+        <div className="flex-shrink-0">
+          {onOpenDashboard && (
+            <NavigationSwitcher
+              activeMode="wallet"
+              onOpenDashboard={onOpenDashboard}
+              onOpenAI={onOpenAI}
+              onOpenTravelWallet={() => {}}
+            />
+          )}
+        </div>
+
+        <div className="flex items-center justify-end flex-1 w-full sm:w-auto">
+          <ThemeToggle variant="segmented" showLabel={true} />
+        </div>
+      </div>
 
       {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-zinc-200 pb-4">
+      <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div className="flex items-center gap-3">
           {onOpenDashboard && (
             <button
               type="button"
               onClick={onOpenDashboard}
-              className="p-2 rounded-xl border border-zinc-200/80 hover:bg-zinc-100 text-zinc-600 hover:text-zinc-950 transition-colors cursor-pointer active:scale-95 shadow-2xs"
+              className="p-2 rounded-xl border border-zinc-200/80 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors cursor-pointer active:scale-95 shadow-2xs"
               title="Back to Markets"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
           )}
           <div>
-            <h1 className="text-xl font-bold text-zinc-900 tracking-tight flex items-center gap-2">
+            <h1 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight flex items-center gap-2">
               <span>Travel Currency Wallet</span>
-              <span className="text-xs px-2 py-0.5 rounded-full font-semibold bg-zinc-100 text-zinc-600 border border-zinc-200/70">
+              <span className="text-xs px-2 py-0.5 rounded-full font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200/70 dark:border-zinc-700">
                 Multi-Currency
               </span>
             </h1>
-            <p className="text-xs text-zinc-500 font-normal mt-0.5">
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal mt-0.5">
               Track expenses in destination currency and convert into your choice of home currency.
             </p>
           </div>
@@ -336,7 +352,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
         <button
           type="button"
           onClick={() => setShowAddSection(true)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 hover:bg-zinc-800 text-white transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add Section</span>
@@ -362,20 +378,20 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
           return (
             <div
               key={section.id}
-              className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-xs space-y-4 transition-all"
+              className="bg-white dark:bg-[#121216] border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 shadow-xs space-y-4 transition-all"
             >
               {/* Section Header */}
-              <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
-                <span className="text-base font-bold text-zinc-950">
+              <div className="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                <span className="text-base font-bold text-zinc-950 dark:text-zinc-100">
                   {section.name}
                 </span>
 
                 <div className="flex items-center gap-3">
                   {/* Converted Total */}
-                  <div className="text-xs font-bold text-zinc-900 tabular-nums">
+                  <div className="text-xs font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">
                     <span>{spendObj.symbol}{totalForeign.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     <span className="text-zinc-400 mx-1.5">➔</span>
-                    <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60 font-mono">
+                    <span className="text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-200/60 dark:border-emerald-800/60 font-mono">
                       {targetObj.symbol}{totalConverted.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {targetCode}
                     </span>
                   </div>
@@ -384,7 +400,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                     type="button"
                     onClick={() => handleDeleteSection(section.id)}
                     title="Remove Section"
-                    className="text-zinc-300 hover:text-rose-600 p-1 rounded transition-colors cursor-pointer"
+                    className="text-zinc-300 dark:text-zinc-600 hover:text-rose-600 dark:hover:text-rose-400 p-1 rounded transition-colors cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -392,18 +408,18 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
               </div>
 
               {/* Currency Pair Selector & Conversion Rate Control Bar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-zinc-50/80 p-2.5 rounded-xl border border-zinc-200/70 text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-zinc-50/80 dark:bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-200/70 dark:border-zinc-800 text-xs">
                 <div className="flex items-center gap-2 flex-wrap">
                   {/* Spend Currency Selector */}
-                  <div className="flex items-center gap-1.5 bg-white border border-zinc-200 rounded-lg px-2 py-1 shadow-2xs">
+                  <div className="flex items-center gap-1.5 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-2 py-1 shadow-2xs">
                     <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">Spend:</span>
                     <select
                       value={spendCode}
                       onChange={(e) => handleUpdateSectionCurrency(section.id, e.target.value)}
-                      className="text-xs font-bold text-zinc-900 bg-transparent outline-none cursor-pointer"
+                      className="text-xs font-bold text-zinc-900 dark:text-zinc-100 bg-transparent outline-none cursor-pointer"
                     >
                       {AVAILABLE_CURRENCIES.map(c => (
-                        <option key={c.code} value={c.code}>
+                        <option key={c.code} value={c.code} className="dark:bg-zinc-800 dark:text-zinc-100">
                           {c.code} ({c.symbol})
                         </option>
                       ))}
@@ -414,22 +430,22 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                   <button
                     type="button"
                     onClick={() => handleSwapSectionCurrencies(section.id)}
-                    className="p-1 rounded-lg border border-zinc-200 bg-white hover:bg-zinc-100 text-zinc-600 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+                    className="p-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
                     title={`Swap ${spendCode} and ${targetCode}`}
                   >
                     <ArrowLeftRight className="w-3.5 h-3.5" />
                   </button>
 
-                  {/* Target Currency Selector (User chooses: JPY to USD, EUR to USD, etc.) */}
-                  <div className="flex items-center gap-1.5 bg-white border border-zinc-200 rounded-lg px-2 py-1 shadow-2xs">
+                  {/* Target Currency Selector */}
+                  <div className="flex items-center gap-1.5 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-2 py-1 shadow-2xs">
                     <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">To:</span>
                     <select
                       value={targetCode}
                       onChange={(e) => handleUpdateSectionTargetCurrency(section.id, e.target.value)}
-                      className="text-xs font-bold text-zinc-900 bg-transparent outline-none cursor-pointer"
+                      className="text-xs font-bold text-zinc-900 dark:text-zinc-100 bg-transparent outline-none cursor-pointer"
                     >
                       {AVAILABLE_CURRENCIES.map(c => (
-                        <option key={c.code} value={c.code}>
+                        <option key={c.code} value={c.code} className="dark:bg-zinc-800 dark:text-zinc-100">
                           {c.code} ({c.symbol})
                         </option>
                       ))}
@@ -438,7 +454,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                 </div>
 
                 {/* Live Currency Rate Badge */}
-                <div className="flex items-center gap-1.5 text-xs font-mono font-semibold bg-white px-2.5 py-1 rounded-lg border border-zinc-200 text-zinc-800 shadow-2xs tabular-nums self-start sm:self-auto">
+                <div className="flex items-center gap-1.5 text-xs font-mono font-semibold bg-white dark:bg-zinc-800 px-2.5 py-1 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 shadow-2xs tabular-nums self-start sm:self-auto">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                   <span>1 {spendCode} = {formatRate(rate)} {targetCode}</span>
                 </div>
@@ -446,11 +462,11 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
 
               {/* Items List (To-Do rows) */}
               {section.items.length === 0 ? (
-                <div className="py-4 text-center text-xs text-zinc-400 bg-zinc-50/50 rounded-xl border border-dashed border-zinc-200">
+                <div className="py-4 text-center text-xs text-zinc-400 dark:text-zinc-500 bg-zinc-50/50 dark:bg-zinc-900/40 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800">
                   No items yet. Type an expense below to add.
                 </div>
               ) : (
-                <div className="divide-y divide-zinc-100">
+                <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
                   {section.items.map(item => {
                     const itemConverted = item.amount * rate;
                     return (
@@ -459,24 +475,24 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                         className="py-2.5 flex items-center justify-between gap-3 text-xs group"
                       >
                         {/* Title (e.g. Shinkansen bullet train) */}
-                        <span className="font-medium text-zinc-800">
+                        <span className="font-medium text-zinc-800 dark:text-zinc-200">
                           {item.title}
                         </span>
 
                         {/* Foreign Amount ➔ Converted Amount */}
                         <div className="flex items-center gap-3 shrink-0 tabular-nums">
-                          <span className="font-semibold text-zinc-600 font-mono">
+                          <span className="font-semibold text-zinc-600 dark:text-zinc-400 font-mono">
                             {spendObj.symbol}{item.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           </span>
-                          <span className="text-zinc-300">➔</span>
-                          <span className="font-bold text-zinc-950 font-mono">
+                          <span className="text-zinc-300 dark:text-zinc-600">➔</span>
+                          <span className="font-bold text-zinc-950 dark:text-zinc-100 font-mono">
                             {targetObj.symbol}{itemConverted.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {targetCode}
                           </span>
 
                           <button
                             type="button"
                             onClick={() => handleDeleteItem(section.id, item.id)}
-                            className="text-zinc-300 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 cursor-pointer"
+                            className="text-zinc-300 dark:text-zinc-600 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 cursor-pointer"
                             title="Delete item"
                           >
                             <X className="w-3.5 h-3.5" />
@@ -501,11 +517,11 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') handleAddItem(section.id);
                   }}
-                  className="flex-1 px-3 py-1.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:bg-white focus:border-zinc-400 transition-all"
+                  className="flex-1 px-3 py-1.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:bg-white dark:focus:bg-zinc-800 focus:border-zinc-400 dark:focus:border-zinc-500 transition-all"
                 />
 
                 <div className="relative w-28 shrink-0">
-                  <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-400">
+                  <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-400 dark:text-zinc-500">
                     {spendObj.symbol}
                   </span>
                   <input
@@ -520,14 +536,14 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') handleAddItem(section.id);
                     }}
-                    className="w-full pl-6 pr-2.5 py-1.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs font-bold text-zinc-900 placeholder-zinc-400 focus:outline-none focus:bg-white focus:border-zinc-400 transition-all tabular-nums"
+                    className="w-full pl-6 pr-2.5 py-1.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl text-xs font-bold text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:bg-white dark:focus:bg-zinc-800 focus:border-zinc-400 dark:focus:border-zinc-500 transition-all tabular-nums"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={() => handleAddItem(section.id)}
-                  className="px-3.5 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl text-xs font-semibold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+                  className="px-3.5 py-1.5 bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 rounded-xl text-xs font-semibold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
                 >
                   Add
                 </button>
@@ -540,14 +556,14 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
 
       {/* Modal: Add Section / Trip */}
       {showAddSection && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white border border-zinc-200 rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-zinc-100">
-              <h3 className="text-sm font-bold text-zinc-900">Add New Section / Trip</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/50 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-sm w-full p-5 shadow-xl space-y-4">
+            <div className="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-800">
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">Add New Section / Trip</h3>
               <button
                 type="button"
                 onClick={() => setShowAddSection(false)}
-                className="text-zinc-400 hover:text-zinc-600 p-1 cursor-pointer"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -555,7 +571,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
 
             <form onSubmit={handleCreateSection} className="space-y-3.5 text-xs">
               <div className="space-y-1">
-                <label className="font-bold text-zinc-700">Section Name</label>
+                <label className="font-bold text-zinc-700 dark:text-zinc-300">Section Name</label>
                 <input
                   type="text"
                   required
@@ -563,57 +579,57 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                   placeholder="e.g. Tokyo Holiday, London Business, Dubai Visit"
                   value={newSectionName}
                   onChange={(e) => setNewSectionName(e.target.value)}
-                  className="w-full px-3 py-2 border border-zinc-300 rounded-xl focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-400"
                 />
               </div>
 
               {/* Destination / Spend Currency */}
               <div className="space-y-1">
-                <label className="font-bold text-zinc-700">
+                <label className="font-bold text-zinc-700 dark:text-zinc-300">
                   Spend Currency (Destination)
                 </label>
                 <select
                   value={newSectionCurrency}
                   onChange={(e) => setNewSectionCurrency(e.target.value)}
-                  className="w-full px-3 py-2 border border-zinc-300 rounded-xl focus:outline-none focus:border-zinc-900 cursor-pointer font-medium bg-zinc-50"
+                  className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-400 cursor-pointer font-medium bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                 >
                   {AVAILABLE_CURRENCIES.map(c => (
-                    <option key={c.code} value={c.code}>
+                    <option key={c.code} value={c.code} className="dark:bg-zinc-800 dark:text-zinc-100">
                       {c.code} — {c.name} ({c.symbol})
                     </option>
                   ))}
                 </select>
-                <p className="text-[10px] text-zinc-400">
+                <p className="text-[10px] text-zinc-400 dark:text-zinc-500">
                   Currency you spend during your trip (e.g. JPY in Japan)
                 </p>
               </div>
 
-              {/* Convert To / Home Currency (Not forced to Rupee!) */}
+              {/* Convert To / Home Currency */}
               <div className="space-y-1">
-                <label className="font-bold text-zinc-700">
+                <label className="font-bold text-zinc-700 dark:text-zinc-300">
                   Convert To (Home Currency)
                 </label>
                 <select
                   value={newSectionTargetCurrency}
                   onChange={(e) => setNewSectionTargetCurrency(e.target.value)}
-                  className="w-full px-3 py-2 border border-zinc-300 rounded-xl focus:outline-none focus:border-zinc-900 cursor-pointer font-medium bg-zinc-50"
+                  className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-400 cursor-pointer font-medium bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                 >
                   {AVAILABLE_CURRENCIES.map(c => (
-                    <option key={c.code} value={c.code}>
+                    <option key={c.code} value={c.code} className="dark:bg-zinc-800 dark:text-zinc-100">
                       {c.code} — {c.name} ({c.symbol})
                     </option>
                   ))}
                 </select>
-                <p className="text-[10px] text-zinc-400">
+                <p className="text-[10px] text-zinc-400 dark:text-zinc-500">
                   Currency you want your expenses converted into (e.g. USD, EUR, etc.)
                 </p>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-2 border-t border-zinc-100">
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-zinc-100 dark:border-zinc-800">
                 <button
                   type="button"
                   onClick={() => setShowAddSection(false)}
-                  className="px-3 py-1.5 text-zinc-500 hover:text-zinc-800 font-semibold cursor-pointer"
+                  className="px-3 py-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
