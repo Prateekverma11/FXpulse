@@ -330,7 +330,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
             <button
               type="button"
               onClick={onOpenDashboard}
-              className="p-2 rounded-xl border border-zinc-200/80 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors cursor-pointer active:scale-95 shadow-2xs"
+              className="p-2 rounded-xl border border-zinc-200/80 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 transition-colors cursor-pointer shadow-2xs"
               title="Back to Markets"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -352,7 +352,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
         <button
           type="button"
           onClick={() => setShowAddSection(true)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 transition-colors shadow-xs cursor-pointer shrink-0"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add Section</span>
@@ -430,7 +430,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                   <button
                     type="button"
                     onClick={() => handleSwapSectionCurrencies(section.id)}
-                    className="p-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+                    className="p-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 transition-colors cursor-pointer shadow-2xs"
                     title={`Swap ${spendCode} and ${targetCode}`}
                   >
                     <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -543,7 +543,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
                 <button
                   type="button"
                   onClick={() => handleAddItem(section.id)}
-                  className="px-3.5 py-1.5 bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 rounded-xl text-xs font-semibold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+                  className="px-3.5 py-1.5 bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 rounded-xl text-xs font-semibold transition-colors shadow-xs cursor-pointer shrink-0"
                 >
                   Add
                 </button>

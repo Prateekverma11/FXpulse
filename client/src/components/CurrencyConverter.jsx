@@ -260,7 +260,7 @@ export default function CurrencyConverter({
                   setDropdownOpen(dropdownOpen === 'base' ? null : 'base');
                   setSearchQuery('');
                 }}
-                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:border-zinc-800 dark:hover:border-zinc-400 bg-zinc-50/50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-750 active:scale-98 transition-all shadow-xs cursor-pointer group"
+                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:border-zinc-800 dark:hover:border-zinc-400 bg-zinc-50/50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-750 transition-colors shadow-xs cursor-pointer group"
               >
                 <span className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
                   {baseCurrency}
@@ -278,7 +278,7 @@ export default function CurrencyConverter({
             onClick={handleSwap}
             title={`Swap ${baseCurrency} and ${quoteCurrency}`}
             aria-label="Swap currencies"
-            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 active:bg-zinc-200 dark:active:bg-zinc-650 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white flex items-center justify-center transition-all duration-200 shadow-xs cursor-pointer hover:scale-105 active:scale-95 ${
+            className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white flex items-center justify-center transition-colors shadow-xs cursor-pointer ${
               isRotating ? 'rotate-180' : ''
             }`}
           >
@@ -309,7 +309,7 @@ export default function CurrencyConverter({
                   setDropdownOpen(dropdownOpen === 'quote' ? null : 'quote');
                   setSearchQuery('');
                 }}
-                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:border-zinc-800 dark:hover:border-zinc-400 bg-zinc-50/50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-750 active:scale-98 transition-all shadow-xs cursor-pointer group"
+                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:border-zinc-800 dark:hover:border-zinc-400 bg-zinc-50/50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-750 transition-colors shadow-xs cursor-pointer group"
               >
                 <span className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
                   {quoteCurrency}
@@ -329,14 +329,14 @@ export default function CurrencyConverter({
           <button
             type="button"
             onClick={onOpenTravelWallet}
-            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#15151b] hover:bg-zinc-50/80 dark:hover:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200 cursor-pointer text-left group shadow-xs hover:shadow-sm"
+            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#15151b] border border-zinc-200/90 dark:border-zinc-800 cursor-pointer text-left group shadow-xs"
           >
             <div className="flex items-center min-w-0 flex-1">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-100/80 dark:border-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
-                <Plane className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700/80 text-zinc-900 dark:text-zinc-100 flex items-center justify-center shrink-0 shadow-2xs">
+                <Plane className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
               </div>
               <div className="ml-3 sm:ml-3.5 min-w-0 flex-1">
-                <span className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 tracking-tight block group-hover:text-blue-950 dark:group-hover:text-blue-300 transition-colors">
+                <span className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 tracking-tight block transition-colors">
                   Planning a trip?
                 </span>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal truncate mt-0.5">
@@ -344,7 +344,7 @@ export default function CurrencyConverter({
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500 transition-colors shrink-0 ml-2" />
           </button>
         )}
 
@@ -353,14 +353,14 @@ export default function CurrencyConverter({
           <button
             type="button"
             onClick={onOpenAI}
-            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#15151b] hover:bg-zinc-50/80 dark:hover:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200 cursor-pointer text-left group shadow-xs hover:shadow-sm"
+            className="relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#15151b] border border-zinc-200/90 dark:border-zinc-800 cursor-pointer text-left group shadow-xs"
           >
             <div className="flex items-center min-w-0 flex-1">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-100/80 dark:border-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
-                <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700/80 text-zinc-900 dark:text-zinc-100 flex items-center justify-center shrink-0 shadow-2xs">
+                <Sparkles className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
               </div>
               <div className="ml-3 sm:ml-3.5 min-w-0 flex-1">
-                <span className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 tracking-tight block group-hover:text-amber-950 dark:group-hover:text-amber-300 transition-colors">
+                <span className="text-sm font-semibold text-zinc-950 dark:text-zinc-100 tracking-tight block transition-colors">
                   Why is this currency moving?
                 </span>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 font-normal truncate mt-0.5">
@@ -368,7 +368,7 @@ export default function CurrencyConverter({
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+            <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500 transition-colors shrink-0 ml-2" />
           </button>
         )}
       </div>

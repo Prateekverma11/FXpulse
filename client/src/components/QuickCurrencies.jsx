@@ -83,21 +83,21 @@ export default function QuickCurrencies({
             <div
               key={code}
               onClick={() => onSelectCurrency(code)}
-              className={`relative p-3.5 rounded-xl text-left border transition-all cursor-pointer group flex flex-col justify-between ${
+              className={`relative p-3.5 rounded-xl text-left border transition-colors cursor-pointer group flex flex-col justify-between ${
                 isSelected
-                  ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-clean-sm'
-                  : 'bg-white dark:bg-[#121216] text-zinc-800 dark:text-zinc-200 border-zinc-200/90 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-50/60 dark:hover:bg-zinc-800/50 shadow-clean-xs'
+                  ? 'bg-zinc-900 dark:bg-zinc-800 text-white dark:text-zinc-100 border-zinc-900 dark:border-zinc-600 shadow-clean-sm'
+                  : 'bg-white dark:bg-[#121216] text-zinc-800 dark:text-zinc-200 border-zinc-200/90 dark:border-zinc-800 shadow-clean-xs'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-1.5">
                     <span className={`w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${
-                      isSelected ? 'bg-zinc-800 dark:bg-zinc-200 text-zinc-200 dark:text-zinc-900' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
+                      isSelected ? 'bg-zinc-800 dark:bg-zinc-700 text-zinc-200 dark:text-zinc-100' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
                     }`}>
                       {curr.symbol}
                     </span>
-                    <span className={`text-xs font-bold ${isSelected ? 'text-white dark:text-zinc-950' : 'text-zinc-900 dark:text-zinc-100'}`}>
+                    <span className={`text-xs font-bold ${isSelected ? 'text-white dark:text-zinc-100' : 'text-zinc-900 dark:text-zinc-100'}`}>
                       {code}
                     </span>
                   </div>
@@ -114,7 +114,7 @@ export default function QuickCurrencies({
                         isBookmarked
                           ? 'text-amber-500'
                           : isSelected
-                          ? 'text-zinc-500 dark:text-zinc-400 hover:text-amber-400 opacity-0 group-hover:opacity-100'
+                          ? 'text-zinc-400 hover:text-amber-400 opacity-0 group-hover:opacity-100'
                           : 'text-zinc-300 dark:text-zinc-600 hover:text-amber-500 opacity-0 group-hover:opacity-100'
                       }`}
                     >
@@ -125,13 +125,13 @@ export default function QuickCurrencies({
                   )}
                 </div>
 
-                <p className={`text-[11px] truncate mb-2 ${isSelected ? 'text-zinc-300 dark:text-zinc-600' : 'text-zinc-500 dark:text-zinc-400'}`}>
+                <p className={`text-[11px] truncate mb-2 ${isSelected ? 'text-zinc-300 dark:text-zinc-400' : 'text-zinc-500 dark:text-zinc-400'}`}>
                   {curr.name}
                 </p>
               </div>
 
               <div className="pt-1 border-t border-zinc-100/10 dark:border-zinc-700/20 flex items-baseline justify-between">
-                <span className={`text-sm font-bold tracking-tight tabular-nums ${isSelected ? 'text-white dark:text-zinc-950' : 'text-zinc-900 dark:text-zinc-100'}`}>
+                <span className={`text-sm font-bold tracking-tight tabular-nums ${isSelected ? 'text-white dark:text-zinc-100' : 'text-zinc-900 dark:text-zinc-100'}`}>
                   {rateVal ? `₹${rateVal > 10 ? rateVal.toFixed(2) : rateVal.toFixed(4)}` : '₹--'}
                 </span>
                 <span className={`text-[10px] font-normal ${isSelected ? 'text-zinc-400 dark:text-zinc-600' : 'text-zinc-400 dark:text-zinc-500'}`}>

@@ -25,9 +25,9 @@ export default function Header({
         <div className="flex items-center justify-between gap-4">
           <div 
             onClick={onOpenDashboard}
-            className="flex items-center gap-3 cursor-pointer select-none group"
+            className="flex items-center gap-3 cursor-pointer select-none"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 flex items-center justify-center font-bold text-sm tracking-tighter shadow-clean-xs group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-zinc-800 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700/80 flex items-center justify-center font-bold text-sm tracking-tighter shadow-clean-xs">
               ₹
             </div>
             <div>
@@ -66,7 +66,7 @@ export default function Header({
             <button
               type="button"
               onClick={onOpenBookmarks}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 text-zinc-800 dark:text-zinc-200 border border-zinc-200/90 dark:border-zinc-700/80 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all shadow-clean-xs active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 text-zinc-800 dark:text-zinc-200 border border-zinc-200/90 dark:border-zinc-700/80 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors shadow-clean-xs"
               title="Open Bookmarked Currencies"
             >
               <Bookmark className={`w-3.5 h-3.5 transition-colors ${bookmarks.length > 0 ? 'fill-amber-500 text-amber-500' : 'text-zinc-400'}`} />
@@ -96,7 +96,7 @@ export default function Header({
             <button
               type="button"
               onClick={currentView === 'auth' ? onOpenDashboard : onOpenAuth}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 transition-all shadow-clean-xs active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 transition-colors shadow-clean-xs"
             >
               {currentView === 'auth' ? (
                 <>

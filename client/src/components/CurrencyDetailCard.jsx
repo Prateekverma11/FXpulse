@@ -116,8 +116,8 @@ export default function CurrencyDetailCard({
             title={isBookmarked ? 'Remove from watchlist' : 'Bookmark this currency'}
           >
             <Bookmark
-              className={`w-3.5 h-3.5 transition-transform ${
-                isBookmarked ? 'fill-amber-500 text-amber-500 scale-105' : 'text-zinc-400'
+              className={`w-3.5 h-3.5 transition-colors ${
+                isBookmarked ? 'fill-amber-500 text-amber-500' : 'text-zinc-400'
               }`}
             />
             <span>{isBookmarked ? 'Watchlisted' : 'Watchlist'}</span>

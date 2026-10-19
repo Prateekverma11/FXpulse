@@ -136,7 +136,7 @@ export default function WelcomeAuth({
             
             {/* Form Header */}
             <div className="space-y-1 text-center">
-              <div className="w-9 h-9 rounded-lg bg-zinc-900 dark:bg-sky-500 text-white dark:text-zinc-950 font-bold text-sm flex items-center justify-center mx-auto mb-2.5 shadow-sm">
+              <div className="w-9 h-9 rounded-lg bg-zinc-900 dark:bg-zinc-800 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 font-bold text-sm flex items-center justify-center mx-auto mb-2.5 shadow-sm">
                 ₹
               </div>
               <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
@@ -256,7 +256,7 @@ export default function WelcomeAuth({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-zinc-950 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 mt-1 shadow-sm"
+                className="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-sky-500 dark:hover:bg-sky-400 text-white dark:text-zinc-950 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70 mt-1 shadow-sm"
               >
                 {loading ? (
                   <span>Authenticating...</span>
@@ -281,7 +281,7 @@ export default function WelcomeAuth({
             <button
               type="button"
               onClick={handleGuestAccess}
-              className="w-full py-2.5 px-4 bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800/60 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+              className="w-full py-2.5 px-4 bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800/60 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700/80 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               <Activity className="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-400" />
               <span>Explore Dashboard as Guest</span>
