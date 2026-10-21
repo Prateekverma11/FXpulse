@@ -48,27 +48,37 @@ app.use(morgan('dev'));
 // Mount API routes
 app.use('/api', apiRouter);
 
-// Health check root
-app.get('/', (req, res) => {
-  res.json({
-    app: 'FXPulse — Currency Intelligence Platform',
-    version: '1.0.0',
-    status: 'ONLINE',
-    documentation: '/api/status',
-    endpoints: {
-      currencies: '/api/currencies',
-      latestRates: '/api/rates/latest?base=USD',
-      pairAnalytics: '/api/analytics/USD/INR',
-      history: '/api/rates/USD/INR/history?timeframe=30D',
-      movers: '/api/markets/movers',
-      intelligence: '/api/intelligence?base=USD',
-      alerts: '/api/alerts',
-      status: '/api/status'
-    }
-  });
-});
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
 
-// 404 handler
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+
+// If client build exists, serve static assets and support SPA routing
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
+      return next();
+    }
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+} else {
+  // Health check root fallback if client is not built
+  app.get('/', (req, res) => {
+    res.json({
+      app: 'FXPulse — Currency Intelligence Platform',
+      version: '1.0.0',
+      status: 'ONLINE',
+      documentation: '/api/status'
+    });
+  });
+}
+
+// 404 handler for unmatched API routes
 app.use((req, res, next) => {
   res.status(404).json({
     success: false,
