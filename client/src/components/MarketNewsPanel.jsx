@@ -215,21 +215,7 @@ export default function MarketNewsPanel({
           </div>
         </div>
 
-        {/* Quick Micro Macro Ticker Bar */}
-        <div className="grid grid-cols-3 gap-2 pt-1 text-[11px]">
-          <div className="bg-white dark:bg-zinc-850/80 border border-zinc-200/70 dark:border-zinc-800 rounded-md p-1.5 text-center shadow-2xs">
-            <div className="text-[10px] text-zinc-400 font-medium">RBI Repo</div>
-            <div className="font-bold text-zinc-800 dark:text-zinc-200">6.50%</div>
-          </div>
-          <div className="bg-white dark:bg-zinc-850/80 border border-zinc-200/70 dark:border-zinc-800 rounded-md p-1.5 text-center shadow-2xs">
-            <div className="text-[10px] text-zinc-400 font-medium">Brent Crude</div>
-            <div className="font-bold text-emerald-600 dark:text-emerald-400">$78.20</div>
-          </div>
-          <div className="bg-white dark:bg-zinc-850/80 border border-zinc-200/70 dark:border-zinc-800 rounded-md p-1.5 text-center shadow-2xs">
-            <div className="text-[10px] text-zinc-400 font-medium">DXY Dollar</div>
-            <div className="font-bold text-zinc-800 dark:text-zinc-200">104.15</div>
-          </div>
-        </div>
+
       </div>
 
       {/* Category Filter Pills */}
