@@ -14,9 +14,6 @@ export function ThemeProvider({ children }) {
       if (saved === 'dark' || saved === 'light') {
         return saved;
       }
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
     } catch {
       // ignore
     }
@@ -43,22 +40,6 @@ export function ThemeProvider({ children }) {
       console.warn('Could not save theme to localStorage:', e);
     }
   }, [theme]);
-
-  // Listen for OS system theme changes if not manually set
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e) => {
-      const saved = localStorage.getItem('fxpulse_theme');
-      if (!saved) {
-        setThemeState(e.matches ? 'dark' : 'light');
-      }
-    };
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
-  }, []);
 
   const toggleTheme = () => {
     setThemeState(prev => (prev === 'dark' ? 'light' : 'dark'));
