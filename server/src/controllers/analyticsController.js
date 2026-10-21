@@ -146,4 +146,20 @@ export const handleAgentChat = async (req, res) => {
   }
 };
 
+export const getMarketNews = async (req, res) => {
+  const query = req.query.query || 'Indian Rupee forex economy RBI currency market';
+  const quote = (req.query.quote || 'INR').toUpperCase();
+  const base = (req.query.base || 'USD').toUpperCase();
+
+  try {
+    const articles = await CurrencyResearchAgent.fetchMultiSourceNews(query || base, quote);
+    res.json({
+      success: true,
+      data: articles
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 

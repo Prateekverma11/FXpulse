@@ -20,10 +20,10 @@ export default function Header({
 }) {
   return (
     <header className="bg-white/85 dark:bg-[#0c0d10]/85 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 sticky top-0 z-30 transition-colors duration-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Brand & Market Status */}
         <div className="flex items-center justify-between gap-4">
-          <div 
+          <div
             onClick={onOpenDashboard}
             className="flex items-center gap-3 cursor-pointer select-none"
           >

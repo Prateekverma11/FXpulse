@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Sparkles, 
-  Send, 
-  RotateCcw, 
-  Fuel, 
-  Building2, 
-  Layers, 
-  Clock, 
-  ExternalLink, 
-  ShieldCheck, 
-  TrendingDown, 
+import {
+  Sparkles,
+  Send,
+  RotateCcw,
+  Fuel,
+  Building2,
+  Layers,
+  Clock,
+  ExternalLink,
+  ShieldCheck,
+  TrendingDown,
   TrendingUp,
   Bot,
   Search,
@@ -161,7 +161,7 @@ export default function AgenticAISection({
           <NavigationSwitcher
             activeMode="ai"
             onOpenDashboard={onOpenDashboard}
-            onOpenAI={() => {}}
+            onOpenAI={() => { }}
             onOpenTravelWallet={onOpenTravelWallet}
           />
         </div>
@@ -218,11 +218,10 @@ export default function AgenticAISection({
                   type="button"
                   onClick={() => handleSelectPair(p.base, p.quote)}
                   disabled={isResearching}
-                  className={`text-xs px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${
-                    active
+                  className={`text-xs px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${active
                       ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-2xs font-semibold'
                       : 'bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 border border-zinc-200/70 dark:border-zinc-700'
-                  }`}
+                    }`}
                 >
                   {p.label}
                 </button>
@@ -234,7 +233,7 @@ export default function AgenticAISection({
         {/* Chat Messages Feed */}
         <div className="p-6 space-y-4 max-h-[520px] min-h-[340px] overflow-y-auto text-xs bg-white dark:bg-[#121216]">
           {messages.map((m) => (
-            <div 
+            <div
               key={m.id}
               className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
@@ -378,11 +377,10 @@ export default function AgenticAISection({
                               <span className="text-xs font-mono font-medium text-zinc-600">
                                 ({m.data.currentRate})
                               </span>
-                              <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border ${
-                                m.data.direction === 'Weakening'
+                              <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border ${m.data.direction === 'Weakening'
                                   ? 'bg-rose-50 text-rose-700 border-rose-200/80'
                                   : 'bg-emerald-50 text-emerald-700 border-emerald-200/80'
-                              }`}>
+                                }`}>
                                 {m.data.currencyName} is {m.data.direction} ({m.data.change24h})
                               </span>
                             </div>
@@ -491,7 +489,7 @@ export default function AgenticAISection({
 
         {/* Chat Input Field */}
         <div className="p-4 bg-white dark:bg-[#121216] border-t border-zinc-200/70 dark:border-zinc-800">
-          <form 
+          <form
             onSubmit={(e) => {
               e.preventDefault();
               handleSend();
