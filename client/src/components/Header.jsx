@@ -23,7 +23,7 @@ export default function Header({
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Brand & Market Status */}
         <div className="flex items-center justify-between gap-4">
-          <div 
+          <div
             onClick={onOpenDashboard}
             className="flex items-center gap-3 cursor-pointer select-none"
           >

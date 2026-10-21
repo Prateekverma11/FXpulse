@@ -297,7 +297,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
 
   return (
     <div className="max-w-2xl mx-auto space-y-8 pb-20">
-      
+
       {/* Top Header / Navigation & Theme Controls */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 -mb-1 sm:-mb-2">
         <div className="hidden sm:flex items-center gap-2 flex-1">
@@ -313,7 +313,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
               activeMode="wallet"
               onOpenDashboard={onOpenDashboard}
               onOpenAI={onOpenAI}
-              onOpenTravelWallet={() => {}}
+              onOpenTravelWallet={() => { }}
             />
           )}
         </div>
@@ -364,7 +364,7 @@ export default function TravelWallet({ onOpenDashboard, onOpenAI }) {
         {sections.map(section => {
           const spendCode = section.foreignCurrency || 'USD';
           const targetCode = section.targetCurrency || 'USD';
-          
+
           const spendObj = AVAILABLE_CURRENCIES.find(c => c.code === spendCode) || { code: spendCode, symbol: section.symbol || spendCode };
           const targetObj = AVAILABLE_CURRENCIES.find(c => c.code === targetCode) || { code: targetCode, symbol: targetCode };
 

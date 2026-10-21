@@ -93,5 +93,10 @@ export const fetchSystemStatus = async () => {
   return res.data;
 };
 
+export const fetchMarketNews = async (query = 'USD', quote = 'INR') => {
+  const res = await api.get(`/news?query=${encodeURIComponent(query)}&quote=${quote}`);
+  return res.data;
+};
+
 export default api;
 

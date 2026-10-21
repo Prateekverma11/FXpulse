@@ -216,9 +216,9 @@ export default function App() {
               ratesMap={ratesMap}
             />
           ) : currentView === 'wallet' ? (
-            <TravelWallet 
-              onOpenDashboard={() => setCurrentView('dashboard')} 
-              onOpenAI={() => setCurrentView('ai')} 
+            <TravelWallet
+              onOpenDashboard={() => setCurrentView('dashboard')}
+              onOpenAI={() => setCurrentView('ai')}
             />
           ) : currentView === 'ai' ? (
             <AgenticAISection
@@ -257,9 +257,9 @@ export default function App() {
               <Route
                 path="/wallet"
                 element={
-                  <TravelWallet 
-                    onOpenDashboard={() => setCurrentView('dashboard')} 
-                    onOpenAI={() => setCurrentView('ai')} 
+                  <TravelWallet
+                    onOpenDashboard={() => setCurrentView('dashboard')}
+                    onOpenAI={() => setCurrentView('ai')}
                   />
                 }
               />

@@ -11,7 +11,8 @@ import {
   getMarketIntelligence,
   comparePairs,
   getCurrencyDiagnosis,
-  handleAgentChat
+  handleAgentChat,
+  getMarketNews
 } from '../controllers/analyticsController.js';
 import {
   getAlerts,
@@ -47,6 +48,7 @@ router.get('/intelligence/research/:base/:quote', getCurrencyDiagnosis);
 router.post('/intelligence/chat', handleAgentChat);
 router.get('/intelligence/chat', handleAgentChat);
 router.get('/compare', comparePairs);
+router.get('/news', getMarketNews);
 
 // Alerts
 router.get('/alerts', getAlerts);

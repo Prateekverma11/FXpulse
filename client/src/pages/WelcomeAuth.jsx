@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { 
-  ArrowRight, 
-  Activity, 
-  TrendingUp, 
-  Bookmark, 
-  Bell, 
-  ArrowRightLeft, 
-  Lock, 
-  Mail, 
-  User, 
-  ShieldCheck, 
+import {
+  ArrowRight,
+  Activity,
+  TrendingUp,
+  Bookmark,
+  Bell,
+  ArrowRightLeft,
+  Lock,
+  Mail,
+  User,
+  ShieldCheck,
   Zap,
   Layers,
   BarChart3
@@ -65,10 +65,10 @@ export default function WelcomeAuth({
     <div className="py-4 sm:py-8 space-y-12">
       {/* Split Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-        
+
         {/* Left Column: Product Value & Architecture (7 cols) */}
         <div className="lg:col-span-7 space-y-8">
-          
+
           {/* Header & Value Proposition */}
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-700/60 text-zinc-800 dark:text-zinc-200 text-xs font-medium">
@@ -133,7 +133,7 @@ export default function WelcomeAuth({
         {/* Right Column: Minimalist Auth Card (5 cols) */}
         <div className="lg:col-span-5">
           <div className="card-clean p-6 sm:p-7 space-y-5 shadow-clean-sm">
-            
+
             {/* Form Header */}
             <div className="space-y-1 text-center">
               <div className="w-9 h-9 rounded-lg bg-zinc-900 dark:bg-zinc-800 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 font-bold text-sm flex items-center justify-center mx-auto mb-2.5 shadow-sm">
@@ -157,11 +157,10 @@ export default function WelcomeAuth({
                   setAuthMode('login');
                   setError('');
                 }}
-                className={`py-1.5 text-xs font-semibold rounded-md transition-all ${
-                  authMode === 'login'
+                className={`py-1.5 text-xs font-semibold rounded-md transition-all ${authMode === 'login'
                     ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-clean-xs'
                     : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
-                }`}
+                  }`}
               >
                 Sign In
               </button>
@@ -172,11 +171,10 @@ export default function WelcomeAuth({
                   setAuthMode('signup');
                   setError('');
                 }}
-                className={`py-1.5 text-xs font-semibold rounded-md transition-all ${
-                  authMode === 'signup'
+                className={`py-1.5 text-xs font-semibold rounded-md transition-all ${authMode === 'signup'
                     ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-clean-xs'
                     : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
-                }`}
+                  }`}
               >
                 Sign Up
               </button>
