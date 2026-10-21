@@ -223,10 +223,10 @@ export default function Dashboard({
       </div>
 
       {/* Dynamic Layout: 2-column split with News on the Right (Default), or Centered when News is closed */}
-      <div className={isNewsOpen ? "grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-8 items-start transition-all duration-300" : "max-w-5xl mx-auto w-full space-y-6 sm:space-y-8 transition-all duration-300"}>
+      <div className={isNewsOpen ? "grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8 items-start transition-all duration-300" : "max-w-5xl mx-auto w-full space-y-6 sm:space-y-8 transition-all duration-300"}>
         
         {/* Left Side (or Middle when centered): Currency Converter, Detail Card & Quick Currencies */}
-        <div className={isNewsOpen ? "xl:col-span-8 space-y-6 sm:space-y-8" : "space-y-6 sm:space-y-8"}>
+        <div className={isNewsOpen ? "xl:col-span-7 space-y-6 sm:space-y-8" : "space-y-6 sm:space-y-8"}>
           {/* 1. Horizontal Mid-Market Currency Converter */}
           <CurrencyConverter
             baseCurrency={baseCurrency}
@@ -277,7 +277,7 @@ export default function Dashboard({
 
         {/* Right Side: Market & Currency News Panel (Default Open, Closes to center page) */}
         {isNewsOpen && (
-          <div className="xl:col-span-4 sticky top-20 animate-fadeIn">
+          <div className="xl:col-span-5 sticky top-20 animate-fadeIn">
             <MarketNewsPanel
               onClose={() => handleToggleNews(false)}
               baseCurrency={baseCurrency}

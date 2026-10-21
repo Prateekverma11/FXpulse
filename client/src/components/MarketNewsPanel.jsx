@@ -256,11 +256,11 @@ export default function MarketNewsPanel({
       </div>
 
       {/* News Articles Feed */}
-      <div className="p-4 space-y-3.5 max-h-[620px] overflow-y-auto scrollbar-thin divide-y divide-zinc-100 dark:divide-zinc-800/60">
+      <div className="p-4 space-y-4 max-h-[680px] overflow-y-auto scrollbar-thin divide-y divide-zinc-100 dark:divide-zinc-800/60">
         {filteredNews.map((item, idx) => (
           <article 
             key={item.id || idx} 
-            className={`group pt-3.5 first:pt-0 space-y-2 transition-all`}
+            className={`group pt-4 first:pt-0 space-y-2.5 transition-all`}
           >
             {/* Meta Row: Source, Time, Impact Tag */}
             <div className="flex items-center justify-between text-[11px] gap-2">
@@ -294,7 +294,7 @@ export default function MarketNewsPanel({
               rel="noopener noreferrer"
               className="block group/link"
             >
-              <h4 className="text-xs sm:text-[13px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug group-hover/link:text-emerald-600 dark:group-hover/link:text-emerald-400 transition-colors flex items-start justify-between gap-2">
+              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-snug group-hover/link:text-emerald-600 dark:group-hover/link:text-emerald-400 transition-colors flex items-start justify-between gap-2">
                 <span>{item.title}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover/link:opacity-100 transition-opacity shrink-0 mt-0.5" />
               </h4>
@@ -302,7 +302,7 @@ export default function MarketNewsPanel({
 
             {/* Concise summary */}
             {item.snippet && (
-              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal line-clamp-2">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-normal line-clamp-3">
                 {item.snippet}
               </p>
             )}
