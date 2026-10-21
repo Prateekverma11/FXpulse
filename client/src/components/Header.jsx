@@ -21,9 +21,9 @@ export default function Header({
 }) {
   return (
     <header className="bg-white/85 dark:bg-[#0c0d10]/85 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 sticky top-0 z-30 transition-colors duration-200">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="w-full px-4 sm:px-6 py-2.5 flex flex-row items-center justify-between gap-4">
         {/* Brand & Market Status */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 shrink-0">
           <div
             onClick={onOpenDashboard}
             className="flex items-center gap-3 cursor-pointer select-none"
@@ -49,7 +49,7 @@ export default function Header({
         </div>
 
         {/* Search, Watchlist, Theme Toggle, and Auth Actions */}
-        <div className="flex items-center gap-2 w-full sm:w-auto">
+        <div className="flex items-center gap-2.5 sm:gap-3.5">
           {currentView === 'dashboard' && (
             <div className="flex-1 sm:w-64">
               <CurrencySearchBar
@@ -67,7 +67,7 @@ export default function Header({
             <button
               type="button"
               onClick={onOpenBookmarks}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 text-zinc-800 dark:text-zinc-200 border border-zinc-200/90 dark:border-zinc-700/80 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors shadow-clean-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-700/80 text-zinc-800 dark:text-zinc-200 border border-zinc-200/90 dark:border-zinc-700/80 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors shadow-clean-xs shrink-0"
               title="Open Bookmarked Currencies"
             >
               <Bookmark className={`w-3.5 h-3.5 transition-colors ${bookmarks.length > 0 ? 'fill-amber-500 text-amber-500' : 'text-zinc-400'}`} />
@@ -80,7 +80,7 @@ export default function Header({
 
           {/* User Profile / Auth State Pill */}
           {user ? (
-            <div className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-800/80 p-1 pl-2.5 rounded-xl border border-zinc-200/80 dark:border-zinc-700/80">
+            <div className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-800/80 p-1 pl-2.5 rounded-xl border border-zinc-200/80 dark:border-zinc-700/80 shrink-0">
               <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 truncate max-w-[100px]">
                 {user.name || user.email?.split('@')[0]}
               </span>
@@ -97,7 +97,7 @@ export default function Header({
             <button
               type="button"
               onClick={currentView === 'auth' ? onOpenDashboard : onOpenAuth}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 transition-colors shadow-clean-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white dark:text-zinc-100 border border-transparent dark:border-zinc-700 transition-colors shadow-clean-xs shrink-0"
             >
               {currentView === 'auth' ? (
                 <>
@@ -113,9 +113,15 @@ export default function Header({
             </button>
           )}
 
-          {/* Theme Toggle — always top-right */}
-          <ThemeToggle variant="segmented" showLabel={true} />
+          {/* Divider */}
+          <span className="w-px h-5 bg-zinc-200 dark:bg-zinc-700 shrink-0 mx-0.5 sm:mx-1" />
+
+          {/* Theme Toggle — pure right corner */}
+          <div className="shrink-0">
+            <ThemeToggle variant="segmented" showLabel={true} />
+          </div>
         </div>
+
       </div>
     </header>
   );

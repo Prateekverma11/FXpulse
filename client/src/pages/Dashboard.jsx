@@ -33,7 +33,7 @@ export default function Dashboard({
   const [ratesMap, setRatesMap] = useState({});
   const [isNewsOpen, setIsNewsOpen] = useState(() => {
     const saved = localStorage.getItem('fxpulse_news_open');
-    return saved !== null ? saved === 'true' : true;
+    return saved !== null ? saved === 'true' : false;
   });
 
   const handleToggleNews = (open) => {
@@ -168,25 +168,7 @@ export default function Dashboard({
     <div className="space-y-6 sm:space-y-8 w-full">
       {/* Top Header / Navigation & Theme Controls in Right Corner */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 -mb-1 sm:-mb-2">
-        <div className="hidden sm:flex items-center gap-2 flex-1">
-          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 tracking-wide uppercase">
-            Live FX Markets
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-
-          {/* Quick reopen button if news was closed */}
-          {!isNewsOpen && (
-            <button
-              type="button"
-              onClick={() => handleToggleNews(true)}
-              className="ml-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-800/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all cursor-pointer shadow-2xs"
-              title="Show Live Market News"
-            >
-              <Newspaper className="w-3.5 h-3.5" />
-              <span>Show News</span>
-            </button>
-          )}
-        </div>
+        <div className="hidden sm:flex items-center gap-2 flex-1" />
 
         <div className="flex-shrink-0">
           <NavigationSwitcher
@@ -218,6 +200,7 @@ export default function Dashboard({
 
           </div>
       </div>
+
 
       {/* Dynamic Layout: 2-column split with News on the Right (Default), or Centered when News is closed */}
       <div className={isNewsOpen ? "grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-start transition-all duration-300" : "max-w-5xl mx-auto w-full space-y-6 sm:space-y-8 transition-all duration-300"}>
