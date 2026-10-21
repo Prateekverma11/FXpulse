@@ -4,7 +4,6 @@ import CurrencyDetailCard from '../components/CurrencyDetailCard';
 import QuickCurrencies from '../components/QuickCurrencies';
 import NavigationSwitcher from '../components/NavigationSwitcher';
 import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
 import MarketNewsPanel from '../components/MarketNewsPanel';
 import { Newspaper } from 'lucide-react';
 import { 
@@ -217,16 +216,14 @@ export default function Dashboard({
             )}
           </button>
 
-          {/* Theme Option in Dashboard Right Corner */}
-          <ThemeToggle variant="segmented" showLabel={true} />
-        </div>
+          </div>
       </div>
 
       {/* Dynamic Layout: 2-column split with News on the Right (Default), or Centered when News is closed */}
-      <div className={isNewsOpen ? "grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8 items-start transition-all duration-300" : "max-w-5xl mx-auto w-full space-y-6 sm:space-y-8 transition-all duration-300"}>
+      <div className={isNewsOpen ? "grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-start transition-all duration-300" : "max-w-5xl mx-auto w-full space-y-6 sm:space-y-8 transition-all duration-300"}>
         
         {/* Left Side (or Middle when centered): Currency Converter, Detail Card & Quick Currencies */}
-        <div className={isNewsOpen ? "xl:col-span-7 space-y-6 sm:space-y-8" : "space-y-6 sm:space-y-8"}>
+        <div className={isNewsOpen ? "xl:col-span-6 space-y-6 sm:space-y-8" : "space-y-6 sm:space-y-8"}>
           {/* 1. Horizontal Mid-Market Currency Converter */}
           <CurrencyConverter
             baseCurrency={baseCurrency}
@@ -277,7 +274,7 @@ export default function Dashboard({
 
         {/* Right Side: Market & Currency News Panel (Default Open, Closes to center page) */}
         {isNewsOpen && (
-          <div className="xl:col-span-5 sticky top-20 animate-fadeIn">
+          <div className="xl:col-span-6 sticky top-20 animate-fadeIn">
             <MarketNewsPanel
               onClose={() => handleToggleNews(false)}
               baseCurrency={baseCurrency}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bookmark, Activity, User, LogOut, LogIn, Briefcase } from 'lucide-react';
 import CurrencySearchBar from './CurrencySearchBar';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header({
   currencies = [],
@@ -111,6 +112,9 @@ export default function Header({
               )}
             </button>
           )}
+
+          {/* Theme Toggle — always top-right */}
+          <ThemeToggle variant="segmented" showLabel={true} />
         </div>
       </div>
     </header>
